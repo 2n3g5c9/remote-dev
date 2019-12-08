@@ -30,13 +30,13 @@ mkdir gcloud && cd gcloud
 git clone https://github.com/GoogleCloudPlatform/cloud-builders-community.git && cd cloud-builders-community
 ```
 
-Setup Packer for **Cloud Build**:
+In the `packer` directory, setup Packer for **Cloud Build**:
 
 ```bash
 (cd packer; gcloud builds submit)
 ```
 
-Setup Terraform for **Cloud Build**:
+In the `terraform` directory, setup Terraform for **Cloud Build**:
 
 ```bash
 (cd terraform; gcloud builds submit)
@@ -47,7 +47,7 @@ Setup Terraform for **Cloud Build**:
 In the `packer` directory, submit the **Cloud Build** job:
 
 ```bash
-gcloud builds submit
+(cd packer; gcloud builds submit)
 ```
 
 ## How to deploy the server
@@ -55,5 +55,5 @@ gcloud builds submit
 In the `terraform` directory, submit the **Cloud Build** job:
 
 ```bash
-gcloud builds submit
+(cd terraform; gcloud builds submit)
 ```

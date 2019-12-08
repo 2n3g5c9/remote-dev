@@ -35,8 +35,7 @@
 	    "type": "shell",
 	    "inline": [
 		    "git clone https://github.com/2n3g5c9/remote-dev.git",
-		    "cd ./remote-dev/bootstrap",
-		    "./bootstrap.sh"
+		    "(cd ./remote-dev/bootstrap; ./bootstrap.sh)"
 	    ]
 	}
     ]

@@ -1,4 +1,12 @@
-# Remote development server
+<div align="center">
+  <img width="512" src="https://raw.githubusercontent.com/2n3g5c9/remote-dev/master/img/remote-dev_banner.png" alt="remote-dev">
+</div>
+
+<br />
+
+<div align="center">Configuration files to bootstrap a remote development box on GCP</div>
+
+<br />
 
 ## Prerequisites
 

@@ -1,5 +1,5 @@
 variable "project-name" {
-  type    = "string"
+  type = "string"
 }
 
 variable "region" {
@@ -13,16 +13,16 @@ variable "zone" {
 }
 
 variable "machine-type" {
-  type = "string"
+  type    = "string"
   default = "f1-micro"
 }
 
 variable "gce_ssh_user" {
-  type = "string"
+  type    = "string"
   default = "2n3g5c9"
 }
 
 variable "gce_ssh_pub_key_file" {
-  type = "string"
+  type    = "string"
   default = "ssh/id_rsa.pub"
 }

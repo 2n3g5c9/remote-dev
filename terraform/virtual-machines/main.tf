@@ -4,13 +4,13 @@ terraform {
   required_version = ">= 0.12, < 0.13"
 
   backend "gcs" {
-    prefix  = "terraform/state"
+    prefix = "terraform/state"
   }
 }
 
 provider "google" {
-  project     = var.project-name
-  region      = var.region
+  project = var.project-name
+  region  = var.region
 }
 
 data "google_compute_image" "remote-dev-image" {
@@ -23,7 +23,7 @@ data "google_compute_image" "remote-dev-image" {
 resource "google_compute_instance" "remote-dev" {
   name         = "remote-dev"
   machine_type = var.machine-type
-  zone         = var.zone 
+  zone         = var.zone
 
   boot_disk {
     initialize_params {
@@ -33,7 +33,7 @@ resource "google_compute_instance" "remote-dev" {
 
   network_interface {
     network = google_compute_network.public.name
-  
+
     access_config {
       nat_ip = google_compute_address.static_external.address
     }
@@ -49,18 +49,18 @@ resource "google_compute_instance" "remote-dev" {
 # Network configuration
 
 resource "google_compute_network" "public" {
-  name = "public"
+  name        = "public"
   description = "Public-facing network."
 
   routing_mode = "REGIONAL"
 }
 
 resource "google_compute_subnetwork" "public" {
-    name          = "public-subnetwork"
-    region        = var.region 
-    
-    network       = google_compute_network.public.self_link
-    ip_cidr_range = "10.0.0.0/24"
+  name   = "public-subnetwork"
+  region = var.region
+
+  network       = google_compute_network.public.self_link
+  ip_cidr_range = "10.0.0.0/24"
 }
 
 resource "google_compute_firewall" "public_ssh" {
@@ -68,16 +68,21 @@ resource "google_compute_firewall" "public_ssh" {
   network = google_compute_network.public.name
 
   source_ranges = ["0.0.0.0/0"]
-  target_tags = ["public-ssh-access"]
+  target_tags   = ["public-ssh-access"]
 
   allow {
     protocol = "tcp"
     ports    = ["22"]
   }
+
+  allow {
+    protocol = "udp"
+    ports    = ["60000-60010"]
+  }
 }
 
 resource "google_compute_address" "static_external" {
-  name = "static-external"
-  description = "Static external IP address for the remote development server."
+  name         = "static-external"
+  description  = "Static external IP address for the remote development server."
   address_type = "EXTERNAL"
 }

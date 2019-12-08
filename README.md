@@ -1,4 +1,12 @@
-# Remote development server
+<div align="center">
+  <img width="512" src="https://raw.githubusercontent.com/2n3g5c9/remote-dev/master/img/remote-dev_banner.png" alt="remote-dev">
+</div>
+
+<br />
+
+<div align="center">Configuration files to bootstrap a remote development box on GCP</div>
+
+<br />
 
 ## Prerequisites
 
@@ -57,3 +65,12 @@ In the `terraform` directory, submit the **Cloud Build** job:
 ```bash
 (cd terraform; gcloud builds submit)
 ```
+
+## Tech/frameworks used
+
+- [Packer](https://www.packer.io/): A tool to "Build Automated Machine Images".
+- [Terraform](https://www.terraform.io/): A tool to "Write, Plan, and Create Infrastructure as Code".
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details

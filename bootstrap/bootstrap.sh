@@ -6,6 +6,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 NVIM_VERSION="0.4.3"
 GO_VERSION="1.13.5"
+NODE_VERSION="12"
 
 apt-upgrade() {
 	echo " ==> Upgrading packages"
@@ -84,6 +85,21 @@ go-installs() {
 	fi
 }
 
+js-installs() {
+	if [ ! -f "/usr/bin/node" ]; then
+		echo " ==> Installing Node.js"
+		curl -sL https://deb.nodesource.com/setup_${NODE_VERSION}.x | sudo bash -
+		sudo apt install -y nodejs
+	fi
+
+	if [ ! -f "/usr/bin/yarn" ]; then
+		echo " ==> Installing yarn"
+		curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+		echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+		sudo apt update && sudo apt install -y yarn && sudo apt auto-remove
+	fi
+}
+
 copy-dotfiles() {
 	echo " ==> Copying dotfiles"
 
@@ -118,6 +134,9 @@ do-it() {
 
 	# Golang installs.
 	go-installs
+
+	# Javascript installs.
+	js-installs
 
 	# Dotfiles.
 	copy-dotfiles

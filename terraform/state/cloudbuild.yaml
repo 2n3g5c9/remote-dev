@@ -2,12 +2,12 @@ steps:
 - name: 'gcr.io/${PROJECT_ID}/terraform'
   args: ['init']
   env:
-    - "TF_VAR_project-name=${PROJECT_ID}"
+    - "TF_VAR_project_name=${PROJECT_ID}"
 - name: 'gcr.io/${PROJECT_ID}/terraform'
   args: ['plan']
   env:
-    - "TF_VAR_project-name=${PROJECT_ID}"
+    - "TF_VAR_project_name=${PROJECT_ID}"
 - name: 'gcr.io/${PROJECT_ID}/terraform'
   args: ['apply', '-auto-approve']
   env:
-    - "TF_VAR_project-name=${PROJECT_ID}"
+    - "TF_VAR_project_name=${PROJECT_ID}"

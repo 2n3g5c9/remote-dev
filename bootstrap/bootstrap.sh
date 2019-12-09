@@ -4,6 +4,9 @@ set -eu
 
 export DEBIAN_FRONTEND=noninteractive
 
+NVIM_VERSION="0.4.3"
+GO_VERSION="1.13.5"
+
 apt-upgrade() {
 	echo " ==> Upgrading packages"
 	sudo apt update && sudo apt upgrade -y
@@ -31,7 +34,7 @@ additional-installs() {
 		sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 	fi
 
-	export ZSH_CUSTOM="${HOME}/.oh-my-zsh/custom"
+	ZSH_CUSTOM="${HOME}/.oh-my-zsh/custom"
 	if [ ! -d "${ZSH_CUSTOM}/themes/spaceship-prompt" ]; then
 		echo " ==> Installing Spaceship ZSH"
 		git clone https://github.com/denysdovhan/spaceship-prompt.git "${ZSH_CUSTOM}/themes/spaceship-prompt"
@@ -48,8 +51,7 @@ additional-installs() {
 		git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting
 	fi
 
-	export LOCAL_BIN="${HOME}/.local/bin"
-	export NVIM_VERSION="0.4.3"
+	LOCAL_BIN="${HOME}/.local/bin"
 	mkdir -p ${LOCAL_BIN}
 	if [ ! -f "${LOCAL_BIN}/nvim.appimage" ]; then
 		echo " ==> Installing nvim"
@@ -57,7 +59,7 @@ additional-installs() {
 		chmod u+x ${LOCAL_BIN}/nvim.appimage
 	fi
 
-	export VIM_PLUG="${HOME}/.config/nvim/autoload/plug.vim"
+	VIM_PLUG="${HOME}/.config/nvim/autoload/plug.vim"
 	if [ ! -f "${VIM_PLUG}" ]; then
 		echo " ==> Installing vim-plug"
 		curl -fLo ${VIM_PLUG} --create-dirs \
@@ -71,9 +73,8 @@ pip-installs() {
 }
 
 go-installs() {
-	export GO_VERSION="1.13.5"
-	export GO_ARCHIVE="go${GO_VERSION}.linux-amd64.tar.gz"
-	export GO_ROOT="/usr/local"
+	GO_ARCHIVE="go${GO_VERSION}.linux-amd64.tar.gz"
+	GO_ROOT="/usr/local"
 	if [ ! -d "${GO_ROOT}/go" ]; then
 		echo " ==> Installing Go"
 		curl -fLo ${GO_ARCHIVE} \

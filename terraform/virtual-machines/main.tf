@@ -9,25 +9,25 @@ terraform {
 }
 
 provider "google" {
-  project = var.project-name
+  project = var.project_name
   region  = var.region
 }
 
-data "google_compute_image" "remote-dev-image" {
+data "google_compute_image" "remote_dev_image" {
   family  = "remote-dev"
-  project = var.project-name
+  project = var.project_name
 }
 
 # Instance configuration
 
-resource "google_compute_instance" "remote-dev" {
+resource "google_compute_instance" "remote_dev" {
   name         = "remote-dev"
-  machine_type = var.machine-type
+  machine_type = var.machine_type
   zone         = var.zone
 
   boot_disk {
     initialize_params {
-      image = data.google_compute_image.remote-dev-image.name
+      image = data.google_compute_image.remote_dev_image.name
     }
   }
 

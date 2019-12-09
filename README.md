@@ -26,7 +26,7 @@ gcloud config set project $PROJECT_ID
 Run the permissions script to be able to call the services APIs:
 
 ```bash
-./set_acls.sh
+./set_acls.sh $PROJECT_ID
 ```
 
 ### Setup Cloud Build

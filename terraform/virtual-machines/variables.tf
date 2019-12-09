@@ -1,4 +1,4 @@
-variable "project-name" {
+variable "project_name" {
   type = "string"
 }
 
@@ -12,7 +12,7 @@ variable "zone" {
   default = "us-central1-a"
 }
 
-variable "machine-type" {
+variable "machine_type" {
   type    = "string"
   default = "f1-micro"
 }

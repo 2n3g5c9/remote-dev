@@ -3,12 +3,12 @@ terraform {
 }
 
 provider "google" {
-  project = var.project-name
+  project = var.project_name
   region  = var.region
 }
 
 resource "google_storage_bucket" "logs" {
-  name = "${var.project-name}_logs"
+  name = "${var.project_name}_logs"
 
   location      = var.location
   storage_class = "STANDARD"
@@ -24,8 +24,8 @@ resource "google_storage_bucket" "logs" {
   }
 }
 
-resource "google_storage_bucket" "tf-state" {
-  name = "${var.project-name}_tf-state"
+resource "google_storage_bucket" "tf_state" {
+  name = "${var.project_name}_tf-state"
 
   location      = var.location
   storage_class = "STANDARD"
@@ -36,7 +36,7 @@ resource "google_storage_bucket" "tf-state" {
 
   logging {
     log_bucket        = google_storage_bucket.logs.name
-    log_object_prefix = "${var.project-name}_tf-state"
+    log_object_prefix = "${var.project_name}_tf-state"
   }
 
   force_destroy = true

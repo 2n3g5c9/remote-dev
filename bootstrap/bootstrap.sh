@@ -6,7 +6,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 NVIM_VERSION="0.4.3"
 GO_VERSION="1.13.5"
-NODE_VERSION="12"
+NODE_VERSION="13"
 
 apt-upgrade() {
 	echo " ==> Upgrading packages"
@@ -65,6 +65,20 @@ additional-installs() {
 		echo " ==> Installing vim-plug"
 		curl -fLo ${VIM_PLUG} --create-dirs \
 			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	fi
+
+	if [ ! -f "/etc/init.d/stackdriver-agent" ]; then
+		echo " ==> Installing Stackdriver monitoring agent"
+		curl -sSO https://dl.google.com/cloudagents/install-monitoring-agent.sh
+		sudo bash ./install-monitoring-agent.sh
+		rm ./install-monitoring-agent.sh
+	fi
+
+	if [ ! -f "/etc/init.d/google-fluentd" ]; then
+		echo " ==> Installing Stackdriver logging agent"
+		curl -sSO https://dl.google.com/cloudagents/install-logging-agent.sh
+		sudo bash ./install-logging-agent.sh
+		rm ./install-logging-agent.sh
 	fi
 }
 

@@ -39,6 +39,16 @@ resource "google_compute_instance" "remote_dev" {
     }
   }
 
+  allow_stopping_for_update = true
+
+  service_account {
+    scopes = [
+      "https://www.googleapis.com/auth/logging.read",
+      "https://www.googleapis.com/auth/logging.write",
+      "https://www.googleapis.com/auth/monitoring"
+    ]
+  }
+
   metadata = {
     ssh-keys = "${var.gce_ssh_user}:${file("${path.module}/${var.gce_ssh_pub_key_file}")}"
   }

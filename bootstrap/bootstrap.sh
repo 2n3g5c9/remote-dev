@@ -16,16 +16,16 @@ apt-upgrade() {
 
 apt-installs() {
 	echo " ==> Installing base packages"
+	sudo apt update
 	sudo apt install -y \
 		zsh \
 		tmux \
+		mosh \
 		git \
-		htop
-#		mosh \
-#		iftop \
-#		python \
-#		python-pip
-
+		htop \
+		iftop \
+		python3 \
+		python3-pip
 	sudo apt auto-remove -y
 }
 
@@ -144,7 +144,7 @@ do-it() {
 	additional-installs
 
 	# Python modules installs.
-  #	pip-installs
+  pip-installs
 
 	# Golang installs.
 	go-installs

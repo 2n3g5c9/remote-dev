@@ -4,7 +4,7 @@ set -eu
 
 export DEBIAN_FRONTEND=noninteractive
 
-NVIM_VERSION="0.5.0"
+NVIM_VERSION="0.4.3"
 GO_VERSION="1.14.2"
 NODE_VERSION="13"
 
@@ -17,15 +17,15 @@ apt-upgrade() {
 
 apt-installs() {
 	echo " ==> Installing base packages"
-	sudo apt install -y		\
-		zsh			            \
-		tmux			          \
-		mosh			          \
-		git			            \
-		htop			          \
-		iftop			          \
-		python3			        \
-		python3-pip
+	sudo apt install -y \
+		zsh \
+		tmux \
+		mosh \
+		git \
+		htop \
+		iftop \
+		python \
+		python-pip
 
 	sudo apt auto-remove -y
 }

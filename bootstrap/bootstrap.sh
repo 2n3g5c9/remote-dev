@@ -84,7 +84,7 @@ additional-installs() {
 
 pip-installs() {
 	echo " ==> Installing Python modules"
-	pip3 install pynvim
+	pip install pynvim
 }
 
 go-installs() {

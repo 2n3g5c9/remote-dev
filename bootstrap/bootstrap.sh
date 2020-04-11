@@ -4,12 +4,13 @@ set -eu
 
 export DEBIAN_FRONTEND=noninteractive
 
-NVIM_VERSION="0.4.3"
-GO_VERSION="1.13.5"
+NVIM_VERSION="0.5.0"
+GO_VERSION="1.14.2"
 NODE_VERSION="13"
 
 apt-upgrade() {
 	echo " ==> Upgrading packages"
+	sudo add-apt-repository universe && sudo add-apt-repository multiverse
 	sudo apt update && sudo apt upgrade -y
 	sudo apt auto-remove -y
 }
@@ -17,13 +18,13 @@ apt-upgrade() {
 apt-installs() {
 	echo " ==> Installing base packages"
 	sudo apt install -y		\
-		zsh			\
-		tmux			\
-		mosh			\
-		git			\
-		htop			\
-		iftop			\
-		python3			\
+		zsh			            \
+		tmux			          \
+		mosh			          \
+		git			            \
+		htop			          \
+		iftop			          \
+		python3			        \
 		python3-pip
 
 	sudo apt auto-remove -y

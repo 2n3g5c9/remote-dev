@@ -10,7 +10,6 @@ NODE_VERSION="13"
 
 apt-upgrade() {
 	echo " ==> Upgrading packages"
-	sudo add-apt-repository universe && sudo add-apt-repository multiverse
 	sudo apt update && sudo apt upgrade -y
 	sudo apt auto-remove -y
 }
@@ -45,26 +44,26 @@ additional-installs() {
 
 	if [ ! -d "${ZSH_CUSTOM}/plugins/zsh-autosuggestions" ]; then
 		echo " ==> Installing zsh-autosuggestions"
-		git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
+		git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM}/plugins/zsh-autosuggestions"
 	fi
 
 	if [ ! -d "${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting" ]; then
 		echo " ==> Installing zsh-syntax-highlighting"
-		git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting
+		git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting"
 	fi
 
 	LOCAL_BIN="${HOME}/.local/bin"
-	mkdir -p ${LOCAL_BIN}
+	mkdir -p "${LOCAL_BIN}"
 	if [ ! -f "${LOCAL_BIN}/nvim.appimage" ]; then
 		echo " ==> Installing nvim"
-		curl -fLo ${LOCAL_BIN}/nvim.appimage https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim.appimage
-		chmod u+x ${LOCAL_BIN}/nvim.appimage
+		curl -fLo "${LOCAL_BIN}/nvim.appimage" https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim.appimage
+		chmod u+x "${LOCAL_BIN}/nvim.appimage"
 	fi
 
 	VIM_PLUG="${HOME}/.config/nvim/autoload/plug.vim"
 	if [ ! -f "${VIM_PLUG}" ]; then
 		echo " ==> Installing vim-plug"
-		curl -fLo ${VIM_PLUG} --create-dirs \
+		curl -fLo "${VIM_PLUG}" --create-dirs \
 			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	fi
 
@@ -118,14 +117,14 @@ js-installs() {
 copy-dotfiles() {
 	echo " ==> Copying dotfiles"
 
-	cp zshrc ${HOME}/.zshrc
-	cp aliases ${HOME}/.aliases
+	cp zshrc "${HOME}/.zshrc"
+	cp aliases "${HOME}/.aliases"
 
-	cp tmux.conf ${HOME}/.tmux.conf
-	cp tmux.conf.local ${HOME}/.tmux.conf.local
+	cp tmux.conf "${HOME}/.tmux.conf"
+	cp tmux.conf.local "${HOME}/.tmux.conf.local"
 
-	mkdir -p ${HOME}/.config/nvim
-	cp init.vim ${HOME}/.config/nvim/init.vim
+	mkdir -p "${HOME}/.config/nvim"
+	cp init.vim "${HOME}/.config/nvim/init.vim"
 }
 
 change-shell() {

@@ -1,24 +1,8 @@
-# Backend configuration
-
-terraform {
-  required_version = ">= 0.12, < 0.13"
-
-  backend "gcs" {
-    prefix = "terraform/state"
-  }
-}
-
-provider "google" {
-  project = var.project_name
-  region  = var.region
-}
-
+# Instance configuration
 data "google_compute_image" "remote_dev_image" {
   family  = "remote-dev"
-  project = var.project_name
+  project = var.project
 }
-
-# Instance configuration
 
 resource "google_compute_instance" "remote_dev" {
   name         = "remote-dev"
@@ -50,14 +34,13 @@ resource "google_compute_instance" "remote_dev" {
   }
 
   metadata = {
-    ssh-keys = "${var.gce_ssh_user}:${file("${path.module}/${var.gce_ssh_pub_key_file}")}"
+    ssh-keys = "${var.gce_ssh_user}:${file("${path.root}/${var.gce_ssh_pub_key_file}")}"
   }
 
   tags = ["public-ssh-access"]
 }
 
 # Network configuration
-
 resource "google_compute_network" "public" {
   name        = "public"
   description = "Public-facing network."

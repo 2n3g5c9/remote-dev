@@ -1,0 +1,33 @@
+steps:
+  - id: 'tf init'
+    name: 'gcr.io/${PROJECT_ID}/terraform'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+          echo "*************** TERRAFORM INIT ******************"
+          terraform init || exit 1
+    env:
+      - "TF_VAR_project=${PROJECT_ID}"
+
+  - id: 'tf plan'
+    name: 'gcr.io/${PROJECT_ID}/terraform'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+          echo "*************** TERRAFORM PLAN ******************"
+          terraform plan -destroy -out terraform.tfplan || exit 1
+    env:
+      - "TF_VAR_project=${PROJECT_ID}"
+
+  - id: 'tf destroy'
+    name: 'gcr.io/${PROJECT_ID}/terraform'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+          echo "************** TERRAFORM DESTROY *****************"
+          terraform apply terraform.tfplan || exit 1
+    env:
+      - "TF_VAR_project=${PROJECT_ID}"

@@ -4,13 +4,13 @@
 
 <br />
 
-<div align="center">Configuration files to bootstrap a remote development box on GCP</div>
+<div align="center">Configuration files to bootstrap a remote development server on GCP</div>
 
 <br />
 
 ## Prerequisites
 
-The configuration files in this repository help automating the provisioning of a development server on **Google Cloud Platform**. An image is built with [Packer](https://packer.io/) and deployed on an `f1-micro` **Compute Engine** instance with [Terraform](https://www.terraform.io/), all via **Cloud Build**, falling in the free-tier.
+The configuration files in this repository help automate the provisioning of a development server on **Google Cloud Platform**. An image is built with [Packer](https://packer.io/) and deployed on an `f1-micro` **Compute Engine** instance with [Terraform](https://www.terraform.io/), all via **Cloud Build**, falling in the free-tier.
 
 ### Initialize the project
 
@@ -38,21 +38,21 @@ mkdir gcloud && cd gcloud
 git clone https://github.com/GoogleCloudPlatform/cloud-builders-community.git && cd cloud-builders-community
 ```
 
-In the `packer` directory, setup Packer for **Cloud Build**:
+In the `cloud-builders-community` repository, setup Packer for **Cloud Build**:
 
 ```bash
 (cd packer; gcloud builds submit)
 ```
 
-In the `terraform` directory, setup Terraform for **Cloud Build**:
+In the `cloud-builders-community` repository, setup Terraform for **Cloud Build**:
 
 ```bash
-(cd terraform; gcloud builds submit)
+(cd terraform; gcloud builds submit --substitutions=_TERRAFORM_VERSION="0.12.24",_TERRAFORM_VERSION_SHA256SUM="602d2529aafdaa0f605c06adb7c72cfb585d8aa19b3f4d8d189b42589e27bf11")
 ```
 
 ## How to build the image
 
-In the `packer` directory, submit the **Cloud Build** job:
+In the `remote-dev` repository, submit the following **Cloud Build** job:
 
 ```bash
 (cd packer; gcloud builds submit)
@@ -60,16 +60,27 @@ In the `packer` directory, submit the **Cloud Build** job:
 
 ## How to deploy the server
 
-In the `terraform` directory, submit the **Cloud Build** job:
+In the `remote-dev` repository, submit the following **Cloud Build** jobs:
 
 ```bash
-(cd terraform; gcloud builds submit)
+(cd terraform/states/; gcloud builds submit)
+(cd terraform/; gcloud builds submit)
+```
+
+## How to destroy the server
+
+In the `remote-dev` repository, submit the following **Cloud Build** jobs:
+
+```bash
+(cd terraform/; gcloud builds submit --config=cloudbuild-destroy.yaml)
+(cd terraform/states/; gcloud builds submit --config=cloudbuild-destroy.yaml)
 ```
 
 ## Tech/frameworks used
 
-- [Packer](https://www.packer.io/): A tool to "Build Automated Machine Images".
-- [Terraform](https://www.terraform.io/): A tool to "Write, Plan, and Create Infrastructure as Code".
+- [Google Cloud Build](https://cloud.google.com/cloud-build): A tool to "Continuously build, test, and deploy".
+- [Packer](https://www.packer.io): A tool to "Build Automated Machine Images".
+- [Terraform](https://www.terraform.io): A tool to "Write, Plan, and Create Infrastructure as Code".
 
 ## License
 

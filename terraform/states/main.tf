@@ -1,16 +1,12 @@
-terraform {
-  required_version = ">= 0.12, < 0.13"
-}
-
 provider "google" {
-  project = var.project_name
+  project = var.project
   region  = var.region
 }
 
 resource "google_storage_bucket" "logs" {
-  name = "${var.project_name}_logs"
+  name = "${var.project}_logs"
 
-  location      = var.location
+  location      = var.region
   storage_class = "STANDARD"
 
   versioning {
@@ -25,9 +21,9 @@ resource "google_storage_bucket" "logs" {
 }
 
 resource "google_storage_bucket" "tf_state" {
-  name = "${var.project_name}_tf-state"
+  name = "${var.project}_tf-state"
 
-  location      = var.location
+  location      = var.region
   storage_class = "STANDARD"
 
   versioning {
@@ -36,7 +32,7 @@ resource "google_storage_bucket" "tf_state" {
 
   logging {
     log_bucket        = google_storage_bucket.logs.name
-    log_object_prefix = "${var.project_name}_tf-state"
+    log_object_prefix = "${var.project}_tf-state"
   }
 
   force_destroy = true

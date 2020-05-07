@@ -6,7 +6,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 NVIM_VERSION="0.4.3"
 GO_VERSION="1.14.2"
-NODE_VERSION="13"
+NODE_VERSION="14"
 
 apt-upgrade() {
 	echo " ==> Upgrading packages"

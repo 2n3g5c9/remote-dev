@@ -24,6 +24,7 @@ apt-installs() {
 		git \
 		htop \
 		iftop \
+		fzf \
 		python3 \
 		python3-pip
 	sudo apt auto-remove -y

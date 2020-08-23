@@ -4,8 +4,8 @@ set -eu
 
 export DEBIAN_FRONTEND=noninteractive
 
-NVIM_VERSION="0.4.3"
-GO_VERSION="1.14.2"
+NVIM_VERSION="0.4.4"
+GO_VERSION="1.15"
 NODE_VERSION="14"
 
 apt-upgrade() {

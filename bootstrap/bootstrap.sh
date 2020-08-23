@@ -122,7 +122,6 @@ copy-dotfiles() {
 	cp aliases "${HOME}/.aliases"
 
 	cp tmux.conf "${HOME}/.tmux.conf"
-	cp tmux.conf.local "${HOME}/.tmux.conf.local"
 
 	mkdir -p "${HOME}/.config/nvim"
 	cp init.vim "${HOME}/.config/nvim/init.vim"

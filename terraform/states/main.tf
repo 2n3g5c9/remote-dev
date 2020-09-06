@@ -1,6 +1,7 @@
 provider "google" {
   project = var.project
   region  = var.region
+  version = "~> 3.0"
 }
 
 resource "google_storage_bucket" "logs" {

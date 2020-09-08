@@ -1,4 +1,11 @@
-# Instance configuration
+# ---------------------------------------------------------------------------------------------------------------------
+# DEPLOY A DEVELOPMENT INSTANCE ACCESSIBLE VIA SSH AND MOSH OVER THE INTERNET
+# ---------------------------------------------------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------------------------------------------------
+# CREATE DEVELOPMENT INSTANCE
+# ---------------------------------------------------------------------------------------------------------------------
+
 data "google_compute_image" "remote_dev_image" {
   family  = "remote-dev"
   project = var.project
@@ -40,7 +47,10 @@ resource "google_compute_instance" "remote_dev" {
   tags = ["public-ssh-access"]
 }
 
-# Network configuration
+# ---------------------------------------------------------------------------------------------------------------------
+# CREATE NETWORK RESOURCES
+# ---------------------------------------------------------------------------------------------------------------------
+
 resource "google_compute_network" "public" {
   name        = "public"
   description = "Public-facing network."

@@ -68,6 +68,12 @@ additional-installs() {
 			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	fi
 
+	TPM="${HOME}/.tmux/plugins/tmp"
+	if [ ! -f "${TPM}" ]; then
+		echo " ==> Installing tpm"
+		git clone https://github.com/tmux-plugins/tpm "${TPM}"
+	fi
+
 	if [ ! -f "/etc/init.d/stackdriver-agent" ]; then
 		echo " ==> Installing Stackdriver monitoring agent"
 		curl -sSO https://dl.google.com/cloudagents/install-monitoring-agent.sh

@@ -96,6 +96,7 @@ source $HOME/.aliases
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 
 # Golang (Development)
 export GOPATH="${HOME}/.go"

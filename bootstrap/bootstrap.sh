@@ -24,10 +24,10 @@ apt-installs() {
 		git \
 		htop \
 		iftop \
-		bat \
 		fzf \
 		python3 \
-		python3-pip
+		python3-pip \
+		ripgrep
 	sudo apt auto-remove -y
 }
 

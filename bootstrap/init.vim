@@ -13,7 +13,10 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-map ; :Files<CR>
+"fzf and rg
+nnoremap ; :Files<CR>
+nnoremap \ :Rg<CR>
+"Move lines around
 nnoremap <S-Up> :m-2<CR>
 nnoremap <S-Down> :m+<CR>
 inoremap <S-Up> <Esc>:m-2<CR>
@@ -24,6 +27,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 "General
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'jremmen/vim-ripgrep'
 Plug 'majutsushi/tagbar'
 Plug 'neomake/neomake'
 Plug 'scrooloose/nerdtree'

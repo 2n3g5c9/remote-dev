@@ -24,6 +24,7 @@ apt-installs() {
 		git \
 		htop \
 		iftop \
+		bat \
 		fzf \
 		python3 \
 		python3-pip
@@ -68,7 +69,7 @@ additional-installs() {
 			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	fi
 
-	TPM="${HOME}/.tmux/plugins/tmp"
+	TPM="${HOME}/.tmux/plugins/tpm"
 	if [ ! -f "${TPM}" ]; then
 		echo " ==> Installing tpm"
 		git clone https://github.com/tmux-plugins/tpm "${TPM}"

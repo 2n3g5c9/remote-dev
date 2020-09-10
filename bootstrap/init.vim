@@ -37,7 +37,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'wellle/targets.vim'
 
 "fzf
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 "Deoplete

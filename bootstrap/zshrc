@@ -98,6 +98,9 @@ source $HOME/.aliases
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 
+# Terraform
+export PATH="$PATH:${HOME}/.tfenv/bin"
+
 # Golang (Development)
 export GOPATH="${HOME}/.go"
 export GOROOT="/usr/local/go"

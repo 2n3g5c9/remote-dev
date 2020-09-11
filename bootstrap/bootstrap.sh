@@ -22,6 +22,7 @@ apt-installs() {
 		tmux \
 		mosh \
 		git \
+		unzip \
 		htop \
 		iftop \
 		fzf \
@@ -70,9 +71,15 @@ additional-installs() {
 	fi
 
 	TPM="${HOME}/.tmux/plugins/tpm"
-	if [ ! -f "${TPM}" ]; then
+	if [ ! -d "${TPM}" ]; then
 		echo " ==> Installing tpm"
 		git clone https://github.com/tmux-plugins/tpm "${TPM}"
+	fi
+
+	TFENV="${HOME}/.tfenv"
+	if [ ! -d "${TFENV}" ]; then
+		echo " ==> Installing tfenv"
+		git clone https://github.com/tfutils/tfenv.git ~/.tfenv
 	fi
 
 	if [ ! -f "/etc/init.d/stackdriver-agent" ]; then

@@ -3,7 +3,7 @@
     "gce_project_id": "",
     "gce_zone": "europe-west1-b",
     "gce_source_image_project_id": "ubuntu-os-cloud",
-    "gce_source_image_family": "ubuntu-2004-lts",
+    "gce_source_image_family": "ubuntu-minimal-2004-lts",
     "name": "remote-dev",
     "ssh_username": "2n3g5c9"
   },
@@ -34,6 +34,7 @@
     {
       "type": "shell",
       "inline": [
+	"sudo apt install -y git",
         "git clone https://github.com/2n3g5c9/remote-dev.git",
         "(cd ./remote-dev/bootstrap; ./bootstrap.sh)"
       ]

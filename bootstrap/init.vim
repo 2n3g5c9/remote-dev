@@ -1,18 +1,30 @@
 "General
 syntax on
+
+set noerrorbells
 set number
 set relativenumber
 set nocompatible
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set smartindent
+set smartcase
+set incsearch
 set wrap
 set ruler
 set mouse=a
 
-"Remapping
+set colorcolumn=80
+highlight ColorColumn ctermbg=0 guibg=lightgrey
+
+"Remappings
 inoremap jj <Esc>
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+"Move around windows
+let mapleader = " "
+nnoremap <leader>h :wincmd h <CR>
+nnoremap <leader>j :wincmd j <CR>
+nnoremap <leader>k :wincmd k <CR>
+nnoremap <leader>l :wincmd l <CR>
 "fzf and rg
 nnoremap ; :Files<CR>
 nnoremap \ :Rg<CR>

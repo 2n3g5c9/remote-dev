@@ -19,15 +19,17 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 "Remappings
 inoremap jj <Esc>
-"Move around windows
 let mapleader = " "
-nnoremap <leader>h :wincmd h <CR>
-nnoremap <leader>j :wincmd j <CR>
-nnoremap <leader>k :wincmd k <CR>
-nnoremap <leader>l :wincmd l <CR>
-"fzf and rg
-nnoremap ; :Files<CR>
-nnoremap \ :Rg<CR>
+"Move around windows
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
+"Resize windows
+nnoremap <leader>= :vertical resize +5<CR>
+nnoremap <leader>- :vertical resize -5<CR>
+nnoremap <leader>+ :horizontal resize +5<CR>
+nnoremap <leader>_ :horizontal resize -5<CR>
 "Move lines around
 nnoremap <S-Up> :m-2<CR>
 nnoremap <S-Down> :m+<CR>
@@ -35,6 +37,16 @@ inoremap <S-Up> <Esc>:m-2<CR>
 inoremap <S-Down> <Esc>:m+<CR>
 "NERDTree
 nnoremap nn :NERDTreeToggle<CR>
+"fzf and rg
+nnoremap ; :Files<CR>
+nnoremap \ :Rg<CR>
+"git
+nnoremap <leader>ga :G add %:p<CR><CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gc :Gcommit -v -q<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gf :diffget //2<CR>
+nnoremap <leader>gh :diffget //3<CR>
 
 "Plugins
 call plug#begin('~/.local/share/nvim/plugged')

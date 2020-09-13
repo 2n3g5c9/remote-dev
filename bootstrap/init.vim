@@ -35,6 +35,8 @@ nnoremap <S-Up> :m-2<CR>
 nnoremap <S-Down> :m+<CR>
 inoremap <S-Up> <Esc>:m-2<CR>
 inoremap <S-Down> <Esc>:m+<CR>
+"Pairs
+let g:rainbow_active = 1
 "NERDTree
 nnoremap nn :NERDTreeToggle<CR>
 "fzf and rg
@@ -53,7 +55,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 "General
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'jiangmiao/auto-pairs'
 Plug 'jremmen/vim-ripgrep'
+Plug 'luochen1990/rainbow'
 Plug 'majutsushi/tagbar'
 Plug 'neomake/neomake'
 Plug 'scrooloose/nerdtree'
@@ -103,7 +107,6 @@ Plug 'nvie/vim-flake8'
 "Terraform
 Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
-let g:terraform_fold_sections=1
 let g:terraform_fmt_on_save=1
 
 call plug#end()

@@ -25,6 +25,7 @@ apt-installs() {
 		unzip \
 		htop \
 		iftop \
+		prettyping \
 		fzf \
 		python3 \
 		python3-pip \

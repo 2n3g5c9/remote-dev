@@ -112,7 +112,7 @@ let g:terraform_fmt_on_save=1
 call plug#end()
 
 "Theme
-set background=dark
 set termguicolors
-colorscheme dracula
 let g:airline_theme = 'dracula'
+let g:dracula_colorterm = 0
+colorscheme dracula

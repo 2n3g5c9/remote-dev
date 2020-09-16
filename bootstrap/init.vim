@@ -101,6 +101,7 @@ Plug 'pangloss/vim-javascript'
 "Go
 Plug 'deoplete-plugins/deoplete-go'
 Plug 'fatih/vim-go'
+Plug 'stamblerre/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 
 "Python
 Plug 'davidhalter/jedi-vim'

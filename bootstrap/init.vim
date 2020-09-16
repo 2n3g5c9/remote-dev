@@ -84,6 +84,9 @@ else
 endif
 let g:deoplete#enable_at_startup = 1
 
+"TabNine
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+
 "Docker
 Plug 'deoplete-plugins/deoplete-docker'
 Plug 'ekalinin/dockerfile.vim'

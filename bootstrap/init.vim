@@ -49,6 +49,8 @@ nnoremap <leader>gc :Gcommit -v -q<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gf :diffget //2<CR>
 nnoremap <leader>gh :diffget //3<CR>
+"JSON formatting
+nnoremap =j :%!jq .<CR>
 
 "Plugins
 call plug#begin('~/.local/share/nvim/plugged')

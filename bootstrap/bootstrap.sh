@@ -18,18 +18,19 @@ apt-installs() {
 	echo " ==> Installing base packages"
 	sudo apt update
 	sudo apt install -y \
-		zsh \
-		tmux \
-		mosh \
+		fzf \
 		git \
-		unzip \
 		htop \
 		iftop \
+		jq \
+		mosh \
 		prettyping \
-		fzf \
 		python3 \
 		python3-pip \
-		ripgrep
+		unzip \
+		ripgrep \
+		tmux \
+		zsh 
 	sudo apt auto-remove -y
 }
 

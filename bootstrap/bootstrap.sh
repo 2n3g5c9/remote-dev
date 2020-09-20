@@ -102,6 +102,7 @@ additional-installs() {
 pip-installs() {
 	echo " ==> Installing Python modules"
 	pip3 install pynvim
+	sudo pip3 install haxor-news
 }
 
 go-installs() {

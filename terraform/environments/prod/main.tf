@@ -5,7 +5,6 @@ locals {
 provider "google" {
   project = var.project
   region  = var.region
-  version = "~> 3.0"
 }
 
 module "dev_instance" {

@@ -38,7 +38,7 @@ inoremap <S-Down> <Esc>:m+<CR>
 "Pairs
 let g:rainbow_active = 1
 "NERDTree
-nnoremap nn :NERDTreeToggle<CR>
+nnoremap nt :NERDTreeToggle<CR>
 "fzf and rg
 nnoremap ; :Files<CR>
 nnoremap \ :Rg<CR>

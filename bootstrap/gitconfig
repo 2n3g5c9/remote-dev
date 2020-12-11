@@ -1,0 +1,13 @@
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[gpg]
+	program = gpg
+[pull]
+	rebase = false
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[include]
+	path = gitalias.txt

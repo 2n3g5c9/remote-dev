@@ -27,10 +27,11 @@ apt-installs() {
 		prettyping \
 		python3 \
 		python3-pip \
-		unzip \
+		ranger \
 		ripgrep \
 		tmux \
-		zsh 
+		unzip \
+		zsh
 	sudo apt auto-remove -y
 }
 
@@ -139,6 +140,9 @@ copy-dotfiles() {
 	cp aliases "${HOME}/.aliases"
 
 	cp tmux.conf "${HOME}/.tmux.conf"
+
+	cp gitaliases.txt "${HOME}/.gitaliases.txt"
+	cp gitconfig "${HOME}/.gitconfig"
 
 	mkdir -p "${HOME}/.config/nvim"
 	cp init.vim "${HOME}/.config/nvim/init.vim"

@@ -39,6 +39,14 @@ inoremap <S-Down> <Esc>:m+<CR>
 let g:rainbow_active = 1
 "NERDTree
 nnoremap nt :NERDTreeToggle<CR>
+let g:NERDTreeHijackNetrw = 0
+"NERDCommenter
+map <leader>/ <Plug>NERDCommenterToggle
+"Ranger
+let g:ranger_replace_netrw = 1
+"WhichKey
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+set timeoutlen=500
 "fzf and rg
 nnoremap ; :Files<CR>
 nnoremap \ :Rg<CR>
@@ -57,12 +65,16 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 "General
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'francoiscabrol/ranger.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'jremmen/vim-ripgrep'
+Plug 'liuchengxu/vim-which-key'
 Plug 'luochen1990/rainbow'
 Plug 'majutsushi/tagbar'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'mhinz/vim-startify'
 Plug 'neomake/neomake'
+Plug 'rbgrouleff/bclose.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'

@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="512" src="https://raw.githubusercontent.com/2n3g5c9/remote-dev/master/img/remote-dev_banner.png" alt="remote-dev">
+  <img width="512" src="https://raw.githubusercontent.com/2n3g5c9/remote-dev/master/img/banner.png" alt="remote-dev">
 </div>
 
 <br />

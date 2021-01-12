@@ -2,13 +2,29 @@
   <img width="512" src="https://raw.githubusercontent.com/2n3g5c9/remote-dev/master/img/banner.png" alt="remote-dev">
 </div>
 
-<br />
+<p align="center">
+    <a href="#-prerequisites">Prerequisites</a>
+    &nbsp; • &nbsp;
+    <a href="#%EF%B8%8F-how-to-build-the-image">Build</a>
+    &nbsp; • &nbsp;
+    <a href="#-how-to-deploy-the-server">Deploy</a>
+    &nbsp; • &nbsp;
+    <a href="#-how-to-destroy-the-server">Destroy</a>
+    &nbsp; • &nbsp;
+    <a href="#-techframeworks-used">Tech/frameworks used</a>
+    &nbsp; • &nbsp;
+    <a href="#-license">License</a>
+</p>
 
-<div align="center">Configuration files to bootstrap a remote development server on GCP</div>
+<p align="center">
+<img src="https://img.shields.io/github/languages/count/2n3g5c9/remote-dev.svg?style=flat" alt="languages-badge"/>
+<img src="https://img.shields.io/github/license/2n3g5c9/remote-dev" alt="license-badge">
+<img src="https://img.shields.io/github/repo-size/2n3g5c9/remote-dev" alt="repo-size-badge">
+<img src="https://img.shields.io/github/last-commit/2n3g5c9/remote-dev" alt="last-commit-badge">
+<img src="https://img.shields.io/github/issues-raw/2n3g5c9/remote-dev" alt="open-issues-badge">
+</p>
 
-<br />
-
-## Prerequisites
+## ✅ Prerequisites
 
 The configuration files in this repository help automate the provisioning of a development server on **Google Cloud Platform**. An image is built with [Packer](https://packer.io/) and deployed on an `f1-micro` **Compute Engine** instance with [Terraform](https://www.terraform.io/), all via **Cloud Build**, falling in the free-tier.
 
@@ -50,7 +66,7 @@ In the `cloud-builders-community` repository, setup Terraform for **Cloud Build*
 (cd terraform; gcloud builds submit --substitutions=_TERRAFORM_VERSION="0.14.0",_TERRAFORM_VERSION_SHA256SUM="07fd7173f7a360ad5e4d5ea5035670cf426cf7a08d0486bc0fe7c9d76b447722")
 ```
 
-## How to build the image
+## ⚙️ How to build the image
 
 In the `remote-dev` repository, submit the following **Cloud Build** job:
 
@@ -58,7 +74,7 @@ In the `remote-dev` repository, submit the following **Cloud Build** job:
 (cd packer; gcloud builds submit)
 ```
 
-## How to deploy the server
+## 🚀 How to deploy the server
 
 In the `remote-dev` repository, submit the following **Cloud Build** jobs:
 
@@ -67,7 +83,7 @@ In the `remote-dev` repository, submit the following **Cloud Build** jobs:
 (cd terraform/; gcloud builds submit)
 ```
 
-## How to destroy the server
+## 🧨 How to destroy the server
 
 In the `remote-dev` repository, submit the following **Cloud Build** jobs:
 
@@ -76,12 +92,12 @@ In the `remote-dev` repository, submit the following **Cloud Build** jobs:
 (cd terraform/states/; gcloud builds submit --config=cloudbuild-destroy.yaml)
 ```
 
-## Tech/frameworks used
+## 🪄 Tech/frameworks used
 
 - [Google Cloud Build](https://cloud.google.com/cloud-build): A tool to "Continuously build, test, and deploy".
 - [Packer](https://www.packer.io): A tool to "Build Automated Machine Images".
 - [Terraform](https://www.terraform.io): A tool to "Write, Plan, and Create Infrastructure as Code".
 
-## License
+## 📃 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details

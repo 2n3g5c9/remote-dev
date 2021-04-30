@@ -43,7 +43,7 @@ additional-installs() {
 
 	if [ ! -f "/usr/local/bn/starship" ]; then
 		echo " ==> Installing Starship"
-		sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+		curl -fsSL https://starship.rs/install.sh | bash -s -- -f
 	fi
 
 	ZSH_CUSTOM="${HOME}/.oh-my-zsh/custom"

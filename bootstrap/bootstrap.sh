@@ -5,8 +5,8 @@ set -eu
 export DEBIAN_FRONTEND=noninteractive
 
 NVIM_VERSION="0.4.4"
-GO_VERSION="1.15"
-NODE_VERSION="15"
+GO_VERSION="1.16"
+NODE_VERSION="16"
 
 apt-upgrade() {
 	echo " ==> Upgrading packages"
@@ -41,13 +41,12 @@ additional-installs() {
 		sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 	fi
 
-	ZSH_CUSTOM="${HOME}/.oh-my-zsh/custom"
-	if [ ! -d "${ZSH_CUSTOM}/themes/spaceship-prompt" ]; then
-		echo " ==> Installing Spaceship ZSH"
-		git clone https://github.com/denysdovhan/spaceship-prompt.git "${ZSH_CUSTOM}/themes/spaceship-prompt"
-		ln -s "${ZSH_CUSTOM}/themes/spaceship-prompt/spaceship.zsh-theme" "${ZSH_CUSTOM}/themes/spaceship.zsh-theme"
+	if [ ! -f "/usr/local/bn/starship" ]; then
+		echo " ==> Installing Starship"
+		sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 	fi
 
+	ZSH_CUSTOM="${HOME}/.oh-my-zsh/custom"
 	if [ ! -d "${ZSH_CUSTOM}/plugins/zsh-autosuggestions" ]; then
 		echo " ==> Installing zsh-autosuggestions"
 		git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM}/plugins/zsh-autosuggestions"
@@ -136,16 +135,16 @@ js-installs() {
 copy-dotfiles() {
 	echo " ==> Copying dotfiles"
 
-	cp zshrc "${HOME}/.zshrc"
-	cp aliases "${HOME}/.aliases"
+	cp config/zsh/zshrc "${HOME}/.zshrc"
+	cp config/aliases/aliases "${HOME}/.aliases"
 
-	cp tmux.conf "${HOME}/.tmux.conf"
+	cp config/tmux/tmux.conf "${HOME}/.tmux.conf"
 
-	cp gitaliases.txt "${HOME}/.gitaliases.txt"
-	cp gitconfig "${HOME}/.gitconfig"
+	cp config/git/gitaliases.txt "${HOME}/.gitaliases.txt"
+	cp config/git/gitconfig "${HOME}/.gitconfig"
 
 	mkdir -p "${HOME}/.config/nvim"
-	cp init.vim "${HOME}/.config/nvim/init.vim"
+	cp -r config/nvim/* "${HOME}/.config/nvim/"
 }
 
 change-shell() {

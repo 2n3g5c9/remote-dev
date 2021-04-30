@@ -3,7 +3,6 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 export ZSH="$HOME/.oh-my-zsh"
 
 export TERM="screen-256color"
-ZSH_THEME="spaceship"
 
 plugins=(
   git
@@ -27,3 +26,5 @@ export PATH="$PATH:${HOME}/.tfenv/bin"
 export GOPATH="${HOME}/.go"
 export GOROOT="/usr/local/go"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+
+eval "$(starship init zsh)"

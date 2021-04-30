@@ -140,7 +140,7 @@ copy-dotfiles() {
 
 	cp config/tmux/tmux.conf "${HOME}/.tmux.conf"
 
-	cp config/git/gitaliases.txt "${HOME}/.gitaliases.txt"
+	cp config/git/gitalias.txt "${HOME}/.gitalias.txt"
 	cp config/git/gitconfig "${HOME}/.gitconfig"
 
 	mkdir -p "${HOME}/.config/nvim"

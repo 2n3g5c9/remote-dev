@@ -84,19 +84,12 @@ additional-installs() {
 		git clone https://github.com/tfutils/tfenv.git ~/.tfenv
 	fi
 
-	if [ ! -f "/etc/init.d/stackdriver-agent" ]; then
-		echo " ==> Installing Stackdriver monitoring agent"
-		curl -sSO https://dl.google.com/cloudagents/install-monitoring-agent.sh
-		sudo bash ./install-monitoring-agent.sh
-		rm ./install-monitoring-agent.sh
-	fi
-
-	if [ ! -f "/etc/init.d/google-fluentd" ]; then
-		echo " ==> Installing Stackdriver logging agent"
-		curl -sSO https://dl.google.com/cloudagents/install-logging-agent.sh
-		sudo bash ./install-logging-agent.sh
-		rm ./install-logging-agent.sh
-	fi
+    if [ ! -d "/etc/google-cloud-ops-agent" ]; then
+        echo " ==> Installing Ops Agent"
+        curl -sSO https://dl.google.com/cloudagents/add-google-cloud-ops-agent-repo.sh
+        sudo bash ./add-google-cloud-ops-agent-repo.sh --also-install
+        rm ./add-google-cloud-ops-agent-repo.sh
+    fi
 }
 
 pip-installs() {

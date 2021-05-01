@@ -7,8 +7,8 @@ provider "google" {
   region  = var.region
 }
 
-module "dev_instance" {
-  source = "../../modules/dev-instance"
+module "remote_dev" {
+  source = "../../modules/remote-dev"
 
   project      = var.project
   machine_type = var.machine_type

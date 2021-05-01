@@ -5,7 +5,7 @@ steps:
     args:
       - '-c'
       - |
-          for dir in environments/*/
+          for dir in env/*/
           do
             cd ${dir}
             env=${dir%*/}
@@ -26,7 +26,7 @@ steps:
     args:
       - '-c'
       - |
-          for dir in environments/*/
+          for dir in env/*/
           do
             cd ${dir}
             env=${dir%*/}
@@ -47,7 +47,7 @@ steps:
     args:
       - '-c'
       - |
-          for dir in environments/*/
+          for dir in env/*/
           do
             cd ${dir}
             env=${dir%*/}

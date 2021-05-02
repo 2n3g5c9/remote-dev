@@ -1,13 +1,20 @@
 [filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
 [gpg]
-	program = gpg
+    program = gpg
 [pull]
-	rebase = false
+    rebase = false
 [core]
-	pager = diff-so-fancy | less --tabs=4 -RFX
+    pager = delta
 [include]
-	path = gitalias.txt
+    path = gitalias.txt
+[delta]
+    plus-style = "syntax #012800"
+    minus-style = "syntax #340001"
+    syntax-theme = Monokai Extended
+    navigate = true
+[interactive]
+    diffFilter = delta --color-only

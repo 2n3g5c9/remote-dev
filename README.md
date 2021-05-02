@@ -66,7 +66,7 @@ In the `cloud-builders-community` repository, setup Terraform for **Cloud Build*
 (cd terraform; gcloud builds submit --substitutions=_TERRAFORM_VERSION="0.15.1",_TERRAFORM_VERSION_SHA256SUM="1ff798791abf518fb0b5d9958ec8327b7213f1c91fb5235923e91cc96c59ef2c")
 ```
 
-## ⚙️ How to build the imagee
+## ⚙️ How to build the image
 
 In the `remote-dev` repository, submit the following **Cloud Build** job:
 

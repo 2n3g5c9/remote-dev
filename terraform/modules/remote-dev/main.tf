@@ -6,6 +6,8 @@
 # CREATE DEVELOPMENT INSTANCE
 # ---------------------------------------------------------------------------------------------------------------------
 
+data "google_compute_default_service_account" "default" {}
+
 data "google_compute_image" "this" {
   family  = "remote-dev"
   project = var.project
@@ -36,17 +38,21 @@ resource "google_compute_instance" "this" {
     ssh-keys = "${var.gce_ssh_user}:${file("${path.root}/${var.gce_ssh_pub_key_file}")}"
   }
 
+  service_account {
+    email  = data.google_compute_default_service_account.default.email
+    scopes = ["cloud-platform"]
+  }
+
   tags = ["public-ssh-access"]
-  
+
   labels = {
-      managed-by = "terraform"
+    managed-by = "terraform"
   }
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
 # CREATE NETWORK RESOURCES
 # ---------------------------------------------------------------------------------------------------------------------
-
 resource "google_compute_firewall" "public_ssh" {
   name    = "public-ssh"
   network = "default"
@@ -71,6 +77,6 @@ resource "google_compute_address" "static_external" {
   address_type = "EXTERNAL"
 
   labels = {
-      managed-by = "terraform"
+    managed-by = "terraform"
   }
 }

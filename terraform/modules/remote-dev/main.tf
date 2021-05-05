@@ -75,8 +75,4 @@ resource "google_compute_address" "static_external" {
   name         = "static-external"
   description  = "Static external IP address for the remote development server."
   address_type = "EXTERNAL"
-
-  labels = {
-    managed-by = "terraform"
-  }
 }

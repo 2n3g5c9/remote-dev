@@ -1,4 +1,4 @@
-#/usr/bin/env bash
+#!/usr/bin/env bash
 
 set -o errexit
 set -o pipefail
@@ -11,10 +11,10 @@ fi
 
 # Set variables
 readonly PROJECT_ID="$1"
-readonly CLOUD_BUILD_ACCOUNT=$(gcloud projects get-iam-policy $PROJECT_ID --filter="(bindings.role:roles/cloudbuild.builds.builder)"  --flatten="bindings[].members" --format="value(bindings.members[])")
+readonly CLOUD_BUILD_ACCOUNT=$(gcloud projects get-iam-policy "$PROJECT_ID" --filter="(bindings.role:roles/cloudbuild.builds.builder)" --flatten="bindings[].members" --format="value(bindings.members[])")
 
 # Set project
-gcloud config set project ${PROJECT_ID}
+gcloud config set project "${PROJECT_ID}"
 
 # Enable services
 gcloud services enable compute
@@ -25,8 +25,8 @@ gcloud services enable compute.googleapis.com
 gcloud services enable servicemanagement.googleapis.com
 gcloud services enable storage-api.googleapis.com
 gcloud services enable cloudbuild.googleapis.com
-	
+
 # Set permissions
-gcloud projects add-iam-policy-binding ${PROJECT_ID} \
-  --member ${CLOUD_BUILD_ACCOUNT} \
+gcloud projects add-iam-policy-binding "${PROJECT_ID}" \
+  --member "${CLOUD_BUILD_ACCOUNT}" \
   --role roles/editor

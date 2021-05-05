@@ -11,14 +11,14 @@ NVIM_VERSION="0.4.4"
 
 apt-upgrade() {
     echo " ==> Upgrading packages"
-    sudo apt update && sudo apt upgrade -y
-    sudo apt auto-remove -y
+    sudo apt-get update && sudo apt-get upgrade -y
+    sudo apt-get auto-remove -y
 }
 
 apt-installs() {
     echo " ==> Installing base packages"
-    sudo apt update
-    sudo apt install -y \
+    sudo apt-get update
+    sudo apt-get install -y \
         fzf \
         git \
         htop \
@@ -33,16 +33,16 @@ apt-installs() {
         tmux \
         unzip \
         zsh
-    sudo apt auto-remove -y
+    sudo apt-get auto-remove -y
 }
 
 additional-installs() {
     if [ ! -d "${HOME}/.oh-my-zsh" ]; then
         echo " ==> Installing Oh My Zsh"
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
     fi
 
-    if [ ! -f "/usr/local/bn/starship" ]; then
+    if [ ! -f "/usr/local/bin/starship" ]; then
         echo " ==> Installing Starship"
         curl -fsSL https://starship.rs/install.sh | bash -s -- -f
     fi
@@ -59,8 +59,9 @@ additional-installs() {
     fi
 
     if [ ! -f "/usr/bin/delta" ]; then
+        echo " ==> Installing git-delta"
         curl -sLO "https://github.com/dandavison/delta/releases/download/${DELTA_VERSION}/git-delta_${DELTA_VERSION}_amd64.deb"
-        dpkg -i ./git-delta_${DELTA_VERSION}_amd64.deb
+        sudo dpkg -i ./git-delta_${DELTA_VERSION}_amd64.deb
         rm ./git-delta_${DELTA_VERSION}_amd64.deb
     fi
 
@@ -93,16 +94,13 @@ additional-installs() {
 
     if [ ! -d "/etc/google-cloud-ops-agent" ]; then
         echo " ==> Installing Ops Agent"
-        curl -sSO https://dl.google.com/cloudagents/add-google-cloud-ops-agent-repo.sh
-        sudo bash ./add-google-cloud-ops-agent-repo.sh --also-install
-        rm ./add-google-cloud-ops-agent-repo.sh
+        curl -fsSL https://dl.google.com/cloudagents/add-google-cloud-ops-agent-repo.sh | sudo bash -s -- --also-install
     fi
 }
 
 pip-installs() {
     echo " ==> Installing Python modules"
     pip3 install pynvim
-    sudo pip3 install haxor-news
 }
 
 go-installs() {
@@ -121,14 +119,14 @@ js-installs() {
     if [ ! -f "/usr/bin/node" ]; then
         echo " ==> Installing Node.js"
         curl -sL https://deb.nodesource.com/setup_${NODE_VERSION}.x | sudo bash -
-        sudo apt install -y nodejs
+        sudo apt-get install -y nodejs
     fi
 
     if [ ! -f "/usr/bin/yarn" ]; then
         echo " ==> Installing yarn"
         curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
         echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-        sudo apt update && sudo apt install -y yarn && sudo apt auto-remove
+        sudo apt-get update && sudo apt-get install -y yarn && sudo apt-get auto-remove
     fi
 }
 

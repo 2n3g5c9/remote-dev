@@ -146,14 +146,11 @@ copy-dotfiles() {
 }
 
 change-shell() {
+    echo " ==> Changing the shell to ZSH"
+
     if [ -f "/bin/zsh" ]; then
         sudo chsh -s /bin/zsh "${USER}"
     fi
-}
-
-disable-root-login-over-ssh() {
-    sudo sed -e 's/#PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config
-    sudo systemctl restart ssh.service
 }
 
 do-it() {
@@ -180,9 +177,6 @@ do-it() {
 
     # ZSH.
     change-shell
-
-    # Disable root SSH login over SSH.
-    disable-root-login-over-ssh
 }
 
 do-it

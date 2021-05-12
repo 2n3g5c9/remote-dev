@@ -53,6 +53,7 @@ resource "google_compute_instance" "this" {
 # ---------------------------------------------------------------------------------------------------------------------
 # CREATE NETWORK RESOURCES
 # ---------------------------------------------------------------------------------------------------------------------
+
 resource "google_compute_firewall" "public_ssh" {
   name    = "public-ssh"
   network = "default"

@@ -151,6 +151,11 @@ change-shell() {
     fi
 }
 
+disable-root-login-over-ssh() {
+    sudo sed -e 's/#PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config
+    sudo systemctl restart ssh.service
+}
+
 do-it() {
     # Update package index and upgrade packages.
     apt-upgrade
@@ -175,6 +180,9 @@ do-it() {
 
     # ZSH.
     change-shell
+
+    # Disable root SSH login over SSH.
+    disable-root-login-over-ssh
 }
 
 do-it

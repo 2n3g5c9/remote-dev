@@ -78,9 +78,6 @@ additional-installs() {
         echo " ==> Installing vim-plug"
         curl -fLo "${VIM_PLUG}" --create-dirs \
             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-        echo " ==> Installing vim plugins"
-        "${LOCAL_BIN}"/nvim.appimage --headless +PlugInstall +qall
     fi
 
     TPM="${HOME}/.tmux/plugins/tpm"
@@ -156,6 +153,14 @@ change-shell() {
     fi
 }
 
+vim-plugins-installs() {
+    LOCAL_BIN="${HOME}/.local/bin"
+    if [ -f "${LOCAL_BIN}/nvim.appimage" ]; then
+      echo " ==> Installing vim plugins"
+      /bin/zsh -i -c "${LOCAL_BIN}/nvim.appimage --headless +PlugInstall +qall"
+    fi
+}
+
 do-it() {
     # Update package index and upgrade packages.
     apt-upgrade
@@ -180,6 +185,9 @@ do-it() {
 
     # ZSH.
     change-shell
+
+    # Vim plugins installs.
+    vim-plugins-installs
 }
 
 do-it

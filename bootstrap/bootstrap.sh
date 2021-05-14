@@ -80,7 +80,7 @@ additional-installs() {
             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
         echo " ==> Installing vim plugins"
-        nvim --headless +PlugInstall +qall
+        "${LOCAL_BIN}"/nvim.appimage --headless +PlugInstall +qall
     fi
 
     TPM="${HOME}/.tmux/plugins/tpm"

@@ -78,6 +78,9 @@ additional-installs() {
         echo " ==> Installing vim-plug"
         curl -fLo "${VIM_PLUG}" --create-dirs \
             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+        echo " ==> Installing vim plugins"
+        nvim --headless +PlugInstall +qall
     fi
 
     TPM="${HOME}/.tmux/plugins/tpm"

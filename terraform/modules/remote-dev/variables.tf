@@ -3,7 +3,7 @@
 # These parameters must be supplied when consuming this module.
 # ---------------------------------------------------------------------------------------------------------------------
 
-variable "gce_ssh_pub_key_file" {
+variable "gce_ssh_pub_key" {
   type = string
 }
 

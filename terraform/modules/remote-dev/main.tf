@@ -35,7 +35,7 @@ resource "google_compute_instance" "this" {
   allow_stopping_for_update = true
 
   metadata = {
-    ssh-keys = "${var.gce_ssh_user}:${file("${path.root}/${var.gce_ssh_pub_key_file}")}"
+    ssh-keys = "${var.gce_ssh_user}:${var.gce_ssh_pub_key}"
   }
 
   service_account {

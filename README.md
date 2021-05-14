@@ -76,7 +76,9 @@ In the `remote-dev` repository, submit the following **Cloud Build** job:
 
 ## 🚀 How to deploy the server
 
-In the `remote-dev` repository, submit the following **Cloud Build** jobs:
+In `remote-dev/terraform/env/prod/terraform.tfvars`, update the SSH user and public key with your values.
+
+Then in the `remote-dev` repository, submit the following **Cloud Build** jobs:
 
 ```bash
 (cd terraform/states; gcloud builds submit)

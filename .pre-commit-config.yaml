@@ -1,3 +1,6 @@
+ci:
+  skip: [terraform-fmt, terraform-validate, tflint, shellcheck]
+
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.0

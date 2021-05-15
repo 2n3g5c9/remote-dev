@@ -17,11 +17,17 @@
 </p>
 
 <p align="center">
-<img src="https://img.shields.io/github/languages/count/2n3g5c9/remote-dev.svg?style=flat" alt="languages-badge"/>
-<img src="https://img.shields.io/github/license/2n3g5c9/remote-dev" alt="license-badge">
-<img src="https://img.shields.io/github/repo-size/2n3g5c9/remote-dev" alt="repo-size-badge">
-<img src="https://img.shields.io/github/last-commit/2n3g5c9/remote-dev" alt="last-commit-badge">
-<img src="https://img.shields.io/github/issues-raw/2n3g5c9/remote-dev" alt="open-issues-badge">
+    <a href="https://results.pre-commit.ci/latest/github/2n3g5c9/remote-dev/master">
+        <img src="https://results.pre-commit.ci/badge/github/2n3g5c9/remote-dev/master.svg" alt="pre-commit.ci status"/>
+    </a>
+</p>
+
+<p align="center">
+    <img src="https://img.shields.io/github/languages/count/2n3g5c9/remote-dev.svg?style=flat" alt="languages-badge"/>
+    <img src="https://img.shields.io/github/license/2n3g5c9/remote-dev" alt="license-badge">
+    <img src="https://img.shields.io/github/repo-size/2n3g5c9/remote-dev" alt="repo-size-badge">
+    <img src="https://img.shields.io/github/last-commit/2n3g5c9/remote-dev" alt="last-commit-badge">
+    <img src="https://img.shields.io/github/issues-raw/2n3g5c9/remote-dev" alt="open-issues-badge">
 </p>
 
 ## ✅ Prerequisites

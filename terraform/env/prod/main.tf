@@ -1,5 +1,5 @@
 locals {
-  env = "prod2"
+  env = "prod"
 }
 
 provider "google" {

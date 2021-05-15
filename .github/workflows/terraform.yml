@@ -26,8 +26,16 @@ jobs:
       - name: Install TFLint ⏬
         run: curl https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
 
+      - name: Download TFLint GCP plugin ⏬
+        run: |
+          mkdir -p ~/.tflint.d/plugins && cd ~/.tflint.d/plugins
+          wget -q https://github.com/terraform-linters/tflint-ruleset-google/releases/download/v0.8.0/tflint-ruleset-google_linux_amd64.zip
+          echo "b09292ddb22761486b9f4da8294ad248147fe60186a4ab5da5ce8cd4723e3eb8 tflint-ruleset-google_linux_amd64.zip" | sha256sum --check
+          unzip tflint-ruleset-google_linux_amd64.zip
+
       - name: Run Terraform Lint Checks ✅
-        run: (cd terraform/env/prod; tflint --loglevel=debug)
+        run: |
+          (cd terraform/modules/remote-dev; tflint)
 
   tfsec:
     name: Terraform Security Checks
@@ -40,12 +48,12 @@ jobs:
           fetch-depth: 0
 
       - name: Run Terraform Security Checks ✅
-        uses: tfsec/tfsec-sarif-action@main
+        uses: tfsec/tfsec-sarif-action@v0.0.4
         with:
-          working_directory: terraform/env/prod
+          working_directory: terraform/modules/remote-dev
           sarif_file: tfsec.sarif
 
       - name: Upload SARIF file ⏫
         uses: github/codeql-action/upload-sarif@v1
         with:
-          sarif_file: terraform/env/prod/tfsec.sarif
+          sarif_file: tfsec.sarif

@@ -17,7 +17,7 @@
 </p>
 
 <p align="center">
-    <a href="https://results.pre-commit.ci/latest/github/2n3g5c9/remote-dev/master">
+    <a href="https://results.pre-commit.ci/latest/github/2n3g5c9/remote-dev/master" aria-label="pre-commit.ci details" target="_blank" rel="noopener noreferrer">
         <img src="https://results.pre-commit.ci/badge/github/2n3g5c9/remote-dev/master.svg" alt="pre-commit.ci status"/>
     </a>
 </p>

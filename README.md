@@ -20,6 +20,12 @@
     <a href="https://results.pre-commit.ci/latest/github/2n3g5c9/remote-dev/master" aria-label="pre-commit.ci details" target="_blank" rel="noopener noreferrer">
         <img src="https://results.pre-commit.ci/badge/github/2n3g5c9/remote-dev/master.svg" alt="pre-commit.ci status"/>
     </a>
+    <a href="https://github.com/2n3g5c9/remote-dev/actions/workflows/terraform.yml">
+        <img src="https://github.com/2n3g5c9/remote-dev/workflows/Terraform%Checks/badge.svg" alt="ci-badge"/>
+    </a>
+    <a href="https://github.com/2n3g5c9/remote-dev/actions/workflows/shell.yml">
+        <img src="https://github.com/2n3g5c9/remote-dev/workflows/Shell%Checks/badge.svg" alt="ci-badge"/>
+    </a>
 </p>
 
 <p align="center">

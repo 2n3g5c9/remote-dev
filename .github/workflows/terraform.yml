@@ -1,0 +1,51 @@
+name: "Terraform Checks"
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "terraform/**"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "terraform/**"
+
+jobs:
+  tflint:
+    name: Terraform Lint Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code 🛎
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Install TFLint ⏬
+        run: curl https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+
+      - name: Run Terraform Lint Checks ✅
+        run: (cd terraform/env/prod; tflint --loglevel=debug)
+
+  tfsec:
+    name: Terraform Security Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code 🛎
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Run Terraform Security Checks ✅
+        uses: tfsec/tfsec-sarif-action@main
+        with:
+          working_directory: terraform/env/prod
+          sarif_file: tfsec.sarif
+
+      - name: Upload SARIF file ⏫
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: terraform/env/prod/tfsec.sarif

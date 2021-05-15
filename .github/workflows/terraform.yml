@@ -27,7 +27,7 @@ jobs:
         run: curl https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
 
       - name: Run Terraform Lint Checks ✅
-        run: (cd terraform/env/prod; tflint --loglevel=debug)
+        run: (cd terraform/modules/remote-dev; tflint --loglevel=debug)
 
   tfsec:
     name: Terraform Security Checks
@@ -40,12 +40,12 @@ jobs:
           fetch-depth: 0
 
       - name: Run Terraform Security Checks ✅
-        uses: tfsec/tfsec-sarif-action@main
+        uses: tfsec/tfsec-sarif-action@v0.0.4
         with:
-          working_directory: terraform/env/prod
+          working_directory: terraform/modules/remote-dev
           sarif_file: tfsec.sarif
 
       - name: Upload SARIF file ⏫
         uses: github/codeql-action/upload-sarif@v1
         with:
-          sarif_file: terraform/env/prod/tfsec.sarif
+          sarif_file: tfsec.sarif

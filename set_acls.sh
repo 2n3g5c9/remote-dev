@@ -3,7 +3,7 @@
 set -o errexit
 set -o pipefail
 
-# Make sure a PROJECT_ID is passed 
+# Make sure a PROJECT_ID is passed
 if [ $# != 1 ]; then
     echo "Usage: $0 PROJECT_ID"
     exit 1
@@ -11,7 +11,8 @@ fi
 
 # Set variables
 readonly PROJECT_ID="$1"
-readonly CLOUD_BUILD_ACCOUNT=$(gcloud projects get-iam-policy "$PROJECT_ID" --filter="(bindings.role:roles/cloudbuild.builds.builder)" --flatten="bindings[].members" --format="value(bindings.members[])")
+CLOUD_BUILD_ACCOUNT=$(gcloud projects get-iam-policy "$PROJECT_ID" --filter="(bindings.role:roles/cloudbuild.builds.builder)" --flatten="bindings[].members" --format="value(bindings.members[])")
+readonly CLOUD_BUILD_ACCOUNT
 
 # Set project
 gcloud config set project "${PROJECT_ID}"

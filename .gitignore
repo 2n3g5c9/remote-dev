@@ -42,5 +42,4 @@ crash.log
 *.box
 
 # Project specific directories
-ssh/
 .idea/

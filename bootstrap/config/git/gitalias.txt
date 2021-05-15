@@ -852,9 +852,9 @@
   #
   #   * --filter=combine:FILTER1+FILTER2 is the syntax to use multiple
   #       filters at once; trying to pass --filter multiple times fails
-  #       with: "multiple filter-specs cannot be combined". 
+  #       with: "multiple filter-specs cannot be combined".
   #
-  # This uses --filter=tree:0 added in Git 2.20 and --filter=combine 
+  # This uses --filter=tree:0 added in Git 2.20 and --filter=combine
   # composite filter added in Git 2.24.
   #
   # The server should be configured with:
@@ -862,13 +862,13 @@
   #     git config --local uploadpack.allowfilter 1
   #     git config --local uploadpack.allowanysha1inwant 1
   #
-  # An extension was made to the Git remote protocol to support this 
+  # An extension was made to the Git remote protocol to support this
   # feature in v2.19.0 and actually skip fetching unneeded objects.
   # There was server support then, but it can be locally tested.
   #
   # Credit: https://stackoverflow.com/questions/600079/how-do-i-clone-a-subdirectory-only-of-a-git-repository/52269934#52269934
   #
-  clone-lean = clone --depth 1 --filter=combine:blob:none+tree:0 --no-checkout 
+  clone-lean = clone --depth 1 --filter=combine:blob:none+tree:0 --no-checkout
 
   # Stash aliases for push & pop
   #
@@ -1230,7 +1230,7 @@
   # Do some work then synchronize your changes, which integrates your branch:
   #
   #     $ git topic-sync
-  #  
+  #
   # Stop work on a topic branch, which deletes your branch:
   #
   #     $ git topic-stop
@@ -1254,18 +1254,18 @@
   # Provide the name of the topic base branch, such as "main".
   #
   # When we create a new topic branch, we base it on the topic base branch.
-  # Many projects use the topic base branch name "main". Some projects use 
+  # Many projects use the topic base branch name "main". Some projects use
   # use "trunk", "develop", "deploy", "integrate", "release", "green", etc.
   #
-  # The topic base branch name is "main" by default. You can customize 
-  # the name for your local repo, or your own user's global configuration, 
+  # The topic base branch name is "main" by default. You can customize
+  # the name for your local repo, or your own user's global configuration,
   # or your system configuration, by using `git config` such as:
   #
-  #    $ git config --local gitalias.topic.base.branch.name "foo" 
+  #    $ git config --local gitalias.topic.base.branch.name "foo"
   #
-  #    $ git config --global gitalias.topic.base.branch.name "foo" 
+  #    $ git config --global gitalias.topic.base.branch.name "foo"
   #
-  #    $ git config --system gitalias.topic.base.branch.name "foo" 
+  #    $ git config --system gitalias.topic.base.branch.name "foo"
   #
   # Thanks to https://github.com/gwjo
   ##

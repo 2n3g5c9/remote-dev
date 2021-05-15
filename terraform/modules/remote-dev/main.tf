@@ -58,6 +58,7 @@ resource "google_compute_firewall" "public_ssh" {
   name    = "public-ssh"
   network = "default"
 
+  #tfsec:ignore:GCP003
   source_ranges = ["0.0.0.0/0"]
   target_tags   = ["public-ssh-access"]
 

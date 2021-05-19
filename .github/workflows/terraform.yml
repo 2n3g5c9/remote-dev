@@ -27,10 +27,13 @@ jobs:
         run: curl https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
 
       - name: Download TFLint GCP plugin ⏬
+        env:
+          TFLINT_RULESET_GCP_VERSION: v0.8.0
+          TFLINT_RULESET_GCP_SHA256: b09292ddb22761486b9f4da8294ad248147fe60186a4ab5da5ce8cd4723e3eb9
         run: |
           mkdir -p ~/.tflint.d/plugins && cd ~/.tflint.d/plugins
-          wget -q https://github.com/terraform-linters/tflint-ruleset-google/releases/download/v0.8.0/tflint-ruleset-google_linux_amd64.zip
-          echo "b09292ddb22761486b9f4da8294ad248147fe60186a4ab5da5ce8cd4723e3eb8 tflint-ruleset-google_linux_amd64.zip" | sha256sum --check
+          wget -q https://github.com/terraform-linters/tflint-ruleset-google/releases/download/$TFLINT_RULESET_GCP_VERSION/tflint-ruleset-google_linux_amd64.zip
+          echo "$TFLINT_RULESET_GCP_SHA256 tflint-ruleset-google_linux_amd64.zip" | sha256sum --check
           unzip tflint-ruleset-google_linux_amd64.zip
 
       - name: Run Terraform Lint Checks ✅

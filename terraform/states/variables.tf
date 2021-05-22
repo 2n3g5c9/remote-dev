@@ -14,7 +14,7 @@ variable "project" {
 
 variable "region" {
   type    = string
-  default = "europe-west1"
+  default = "europe-west2"
 
   validation {
     condition = (

@@ -3,6 +3,8 @@
 </div>
 
 <p align="center">
+    <a href="#-diagram">Diagram</a>
+    &nbsp; • &nbsp;
     <a href="#-prerequisites">Prerequisites</a>
     &nbsp; • &nbsp;
     <a href="#%EF%B8%8F-how-to-build-the-image">Build</a>
@@ -33,9 +35,23 @@
     <img src="https://img.shields.io/github/issues-raw/2n3g5c9/remote-dev" alt="open-issues-badge">
 </p>
 
+## 🖼 Diagram
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/2n3g5c9/remote-dev/master/img/diagram.png" alt="diagram" width="838px"/>
+</p>
+
 ## ✅ Prerequisites
 
 The configuration files in this repository help automate the provisioning of a development server on **Google Cloud Platform**. An image is built with [Packer](https://packer.io/) and deployed on an `f1-micro` **Compute Engine** instance with [Terraform](https://www.terraform.io/), all via **Cloud Build**, falling in the free-tier.
+
+### Generate your SSH key pair
+
+If you don't have an SSH key pair already, generate one:
+
+```bash
+ssh-keygen -o -a 100 -t ed25519 -C remote-dev
+```
 
 ### Initialize the project
 
@@ -72,7 +88,7 @@ In the `cloud-builders-community` repository, setup Packer for **Cloud Build**:
 In the `cloud-builders-community` repository, setup Terraform for **Cloud Build**:
 
 ```bash
-(cd terraform; gcloud builds submit --substitutions=_TERRAFORM_VERSION="0.15.3",_TERRAFORM_VERSION_SHA256SUM="5ce5834fd74e3368ad7bdaac847f973e66e61acae469ee86b88da4c6d9f933d4")
+(cd terraform; gcloud builds submit --substitutions=_TERRAFORM_VERSION="0.15.4",_TERRAFORM_VERSION_SHA256SUM="ddf9b409599b8c3b44d4e7c080da9a106befc1ff9e53b57364622720114e325c")
 ```
 
 ## ⚙️ How to build the image
@@ -85,7 +101,7 @@ In the `remote-dev` repository, submit the following **Cloud Build** job:
 
 ## 🚀 How to deploy the server
 
-In `remote-dev/terraform/env/prod/terraform.tfvars`, update the SSH user and public key with your values.
+In `remote-dev/terraform/env/prod/terraform.tfvars`, update the SSH user and public key with your own values.
 
 Then in the `remote-dev` repository, submit the following **Cloud Build** jobs:
 

@@ -9,6 +9,12 @@ GO_VERSION="1.16"
 NODE_VERSION="16"
 NVIM_VERSION="0.4.4"
 
+apt-sources() {
+    echo " ==> Adds additional APT sources"
+    curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | sudo apt-key add -
+    curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.list | sudo tee /etc/apt/sources.list.d/tailscale.list
+}
+
 apt-upgrade() {
     echo " ==> Upgrading packages"
     sudo apt-get update && sudo apt-get upgrade -y
@@ -30,6 +36,7 @@ apt-installs() {
         python3-pip \
         ranger \
         ripgrep \
+        tailscale \
         tmux \
         unzip \
         zsh
@@ -162,6 +169,9 @@ vim-plugins-installs() {
 }
 
 do-it() {
+    # Add APT sources.
+    apt-sources
+
     # Update package index and upgrade packages.
     apt-upgrade
 

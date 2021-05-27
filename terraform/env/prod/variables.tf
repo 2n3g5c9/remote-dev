@@ -3,14 +3,6 @@
 # These parameters must be supplied when consuming this module.
 # ---------------------------------------------------------------------------------------------------------------------
 
-variable "gce_ssh_pub_key" {
-  type = string
-}
-
-variable "gce_ssh_user" {
-  type = string
-}
-
 variable "machine_type" {
   type = string
 
@@ -24,6 +16,37 @@ variable "machine_type" {
 }
 variable "project" {
   type = string
+}
+
+variable "ssh_pub_key" {
+  type = string
+}
+
+variable "ssh_user" {
+  type = string
+}
+
+variable "tailscale_key" {
+  sensitive = true
+  type      = string
+
+  validation {
+    condition = (
+      can(regex("tskey-[[:alnum:]]+", var.tailscale_key))
+    )
+    error_message = "The Tailscale key must start with 'tskey-'."
+  }
+}
+
+variable "tailscale_machines" {
+  type = list(string)
+
+  validation {
+    condition = alltrue([
+      for tm in var.tailscale_machines : can(regex("100(?:\\.[[:digit:]]+){3}", tm))
+    ])
+    error_message = "All IP addresses must be 100.x.y.z addresses."
+  }
 }
 
 # ---------------------------------------------------------------------------------------------------------------------

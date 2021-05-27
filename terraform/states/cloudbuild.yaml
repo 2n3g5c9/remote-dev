@@ -20,6 +20,7 @@ steps:
           terraform plan -out terraform.tfplan || exit 1
     env:
       - "TF_VAR_project=${PROJECT_ID}"
+      - "TF_VAR_tailscale_key=${TAILSCALE_KEY}"
 
   - id: 'tf apply'
     name: 'gcr.io/${PROJECT_ID}/terraform'
@@ -31,3 +32,4 @@ steps:
           terraform apply terraform.tfplan || exit 1
     env:
       - "TF_VAR_project=${PROJECT_ID}"
+      - "TF_VAR_tailscale_key=${TAILSCALE_KEY}"

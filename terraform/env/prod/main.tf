@@ -13,6 +13,9 @@ module "remote_dev" {
   project      = var.project
   machine_type = var.machine_type
 
-  gce_ssh_user    = var.gce_ssh_user
-  gce_ssh_pub_key = var.gce_ssh_pub_key
+  ssh_user    = var.ssh_user
+  ssh_pub_key = var.ssh_pub_key
+
+  tailscale_key      = var.tailscale_key
+  tailscale_machines = var.tailscale_machines
 }

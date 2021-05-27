@@ -35,15 +35,17 @@ resource "google_compute_instance" "this" {
   allow_stopping_for_update = true
 
   metadata = {
-    ssh-keys = "${var.gce_ssh_user}:${var.gce_ssh_pub_key}"
+    ssh-keys = "${var.ssh_user}:${var.ssh_pub_key}"
   }
+
+  metadata_startup_script = templatefile("${path.module}/startup_script.tpl", { tailscale_key = var.tailscale_key })
 
   service_account {
     email  = data.google_compute_default_service_account.default.email
     scopes = ["cloud-platform"]
   }
 
-  tags = ["public-ssh-access"]
+  tags = ["tailscale-ssh-access"]
 
   labels = {
     managed-by = "terraform"
@@ -54,13 +56,12 @@ resource "google_compute_instance" "this" {
 # CREATE NETWORK RESOURCES
 # ---------------------------------------------------------------------------------------------------------------------
 
-resource "google_compute_firewall" "public_ssh" {
-  name    = "public-ssh"
+resource "google_compute_firewall" "tailscale_ssh" {
+  name    = "tailscale-ssh"
   network = "default"
 
-  #tfsec:ignore:GCP003
-  source_ranges = ["0.0.0.0/0"]
-  target_tags   = ["public-ssh-access"]
+  source_ranges = var.tailscale_machines
+  target_tags   = ["tailscale-ssh-access"]
 
   allow {
     protocol = "tcp"

@@ -36,6 +36,7 @@ apt-installs() {
         python3-pip \
         ranger \
         ripgrep \
+        sshguard \
         tailscale \
         tmux \
         unzip \
@@ -105,6 +106,16 @@ additional-installs() {
     fi
 }
 
+security-hardening() {
+  echo " ==> Setting up sshguard"
+  sudo iptables -N sshguard
+  sudo iptables -A INPUT -m multiport -p tcp --destination-ports 22 -j sshguard
+  sudo iptables -A INPUT -m multiport -p udp --destination-ports 60000:61000 -j sshguard
+  sudo mkdir -p /etc/iptables
+  sudo sh -c "iptables-save > /etc/iptables/iptables.rules"
+  sudo sh -c "iptables-save > /etc/iptables/ip6tables.rules"
+}
+
 pip-installs() {
     echo " ==> Installing Python modules"
     pip3 install pynvim
@@ -154,7 +165,6 @@ copy-dotfiles() {
 
 change-shell() {
     echo " ==> Changing the shell to ZSH"
-
     if [ -f "/bin/zsh" ]; then
         sudo chsh -s /bin/zsh "${USER}"
     fi
@@ -180,6 +190,9 @@ do-it() {
 
     # Additional installs.
     additional-installs
+
+    # Security hardening.
+    security-hardening
 
     # Python modules installs.
     pip-installs

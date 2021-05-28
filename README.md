@@ -131,7 +131,7 @@ restrict network access in your mesh:
     "remote-dev": "INSERT_IP_ADDRESS_HERE"
   },
   "ACLs": [
-    { "Action": "accept", "Users": ["INSERT_USERNAME_HERE"], "Ports": ["remote-dev:22,60000-60010"] }
+    { "Action": "accept", "Users": ["INSERT_USERNAME_HERE"], "Ports": ["remote-dev:22,60000-61000"] }
   ]
 }
 ```

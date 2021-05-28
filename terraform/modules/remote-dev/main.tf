@@ -70,12 +70,14 @@ resource "google_compute_firewall" "tailscale_ssh" {
 
   allow {
     protocol = "udp"
-    ports    = ["60000-60010"]
+    ports    = ["60000-61000"]
   }
 }
 
 resource "google_compute_address" "static_external" {
-  name         = "static-external"
-  description  = "Static external IP address for the remote development server."
+  name        = "static-external"
+  description = "Static external IP address for the remote development server."
+
   address_type = "EXTERNAL"
+  network_tier = "STANDARD"
 }

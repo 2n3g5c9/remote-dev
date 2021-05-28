@@ -22,6 +22,9 @@ apt-upgrade() {
 }
 
 apt-installs() {
+    echo iptables-persistent iptables-persistent/autosave_v4 boolean true | sudo debconf-set-selections
+    echo iptables-persistent iptables-persistent/autosave_v6 boolean true | sudo debconf-set-selections
+
     echo " ==> Installing base packages"
     sudo apt-get update
     sudo apt-get install -y \
@@ -29,6 +32,7 @@ apt-installs() {
         git \
         htop \
         iftop \
+        iptables-persistent \
         jq \
         mosh \
         prettyping \
@@ -114,8 +118,8 @@ security-hardening() {
     sudo iptables -A INPUT -m multiport -p tcp --destination-ports 22 -j sshguard
     sudo iptables -A INPUT -m multiport -p udp --destination-ports 60000:61000 -j sshguard
     sudo mkdir -p /etc/iptables
-    sudo sh -c "iptables-save > /etc/iptables/iptables.rules"
-    sudo sh -c "iptables-save > /etc/iptables/ip6tables.rules"
+    sudo sh -c "iptables-save > /etc/iptables/rules.v4"
+    sudo sh -c "iptables-save > /etc/iptables/rules.v6"
 }
 
 pip-installs() {

@@ -112,7 +112,7 @@ with your own values.
 Generate a [Tailscale ephemeral key](https://login.tailscale.com/admin/settings/authkeys) and set it:
 
 ```bash
-export TAILSCALE_KEY="tskey-XXX"
+export TAILSCALE_KEY="tskey-xxx"
 ```
 
 Then in the `remote-dev` repository, submit the following **Cloud Build** jobs:

@@ -55,7 +55,7 @@ variable "tailscale_machines" {
 
 variable "region" {
   type    = string
-  default = "europe-west2"
+  default = "us-east1"
 
   validation {
     condition = (
@@ -67,7 +67,7 @@ variable "region" {
 
 variable "zone" {
   type    = string
-  default = "europe-west2-b"
+  default = "us-east1-b"
 
   validation {
     condition = (

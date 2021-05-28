@@ -60,6 +60,3 @@ steps:
             terraform apply terraform.tfplan || exit 1
             cd ../../
           done
-    env:
-      - "TF_VAR_project=${PROJECT_ID}"
-      - "TF_VAR_tailscale_key=${_TAILSCALE_KEY}"

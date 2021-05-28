@@ -29,5 +29,3 @@ steps:
       - |
           echo "*************** TERRAFORM APPLY ******************"
           terraform apply terraform.tfplan || exit 1
-    env:
-      - "TF_VAR_project=${PROJECT_ID}"

@@ -40,7 +40,6 @@ steps:
           done
     env:
       - "TF_VAR_project=${PROJECT_ID}"
-      - "TF_VAR_tailscale_key=${_TAILSCALE_KEY}"
 
   - id: 'tf destroy'
     name: 'gcr.io/${PROJECT_ID}/terraform'
@@ -60,6 +59,3 @@ steps:
             terraform apply terraform.tfplan || exit 1
             cd ../../
           done
-    env:
-      - "TF_VAR_project=${PROJECT_ID}"
-      - "TF_VAR_tailscale_key=${_TAILSCALE_KEY}"

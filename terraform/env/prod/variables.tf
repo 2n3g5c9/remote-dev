@@ -56,7 +56,7 @@ variable "tailscale_machines" {
 
 variable "region" {
   type    = string
-  default = "europe-west2"
+  default = "us-east1"
 
   validation {
     condition = (

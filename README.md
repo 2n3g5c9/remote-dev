@@ -109,7 +109,7 @@ In the `remote-dev` repository, submit the following **Cloud Build** job:
 In `remote-dev/terraform/env/prod/terraform.tfvars`, replace the SSH user/public key and Tailscale machines IP addresses
 with your own values.
 
-Generate a [Tailscale one-off key](https://login.tailscale.com/admin/settings/authkeys) and set it:
+Generate a [Tailscale ephemeral key](https://login.tailscale.com/admin/settings/authkeys) and set it:
 
 ```bash
 export TAILSCALE_KEY="tskey-XXX"

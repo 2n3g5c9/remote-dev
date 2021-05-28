@@ -1,3 +1,3 @@
 steps:
 - name: 'gcr.io/$PROJECT_ID/packer'
-  args: ['build', '-var', 'gce_project_id=$PROJECT_ID', 'packer.json']
+  args: ['build', '-force', '-var', 'gce_project_id=$PROJECT_ID', 'packer.json']

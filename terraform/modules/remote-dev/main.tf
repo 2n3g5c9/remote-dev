@@ -28,7 +28,8 @@ resource "google_compute_instance" "this" {
     network = "default"
 
     access_config {
-      nat_ip = google_compute_address.static_external.address
+      nat_ip       = google_compute_address.static_external.address
+      network_tier = "STANDARD"
     }
   }
 
@@ -38,7 +39,12 @@ resource "google_compute_instance" "this" {
     ssh-keys = "${var.ssh_user}:${var.ssh_pub_key}"
   }
 
-  metadata_startup_script = templatefile("${path.module}/startup_script.tpl", { tailscale_key = var.tailscale_key })
+  metadata_startup_script = templatefile("${path.module}/startup_script.tpl",
+    {
+      tailscale_key      = var.tailscale_key
+      tailscale_machines = var.tailscale_machines
+    }
+  )
 
   service_account {
     email  = data.google_compute_default_service_account.default.email

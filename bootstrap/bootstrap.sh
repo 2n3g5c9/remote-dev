@@ -107,13 +107,15 @@ additional-installs() {
 }
 
 security-hardening() {
-  echo " ==> Setting up sshguard"
-  sudo iptables -N sshguard
-  sudo iptables -A INPUT -m multiport -p tcp --destination-ports 22 -j sshguard
-  sudo iptables -A INPUT -m multiport -p udp --destination-ports 60000:61000 -j sshguard
-  sudo mkdir -p /etc/iptables
-  sudo sh -c "iptables-save > /etc/iptables/iptables.rules"
-  sudo sh -c "iptables-save > /etc/iptables/ip6tables.rules"
+    echo " ==> Setting up sshd"
+    sudo cp config/ssh/sshd_config /etc/ssh/sshd_config
+
+    echo " ==> Setting up sshguard"
+    sudo iptables -A INPUT -m multiport -p tcp --destination-ports 22 -j sshguard
+    sudo iptables -A INPUT -m multiport -p udp --destination-ports 60000:61000 -j sshguard
+    sudo mkdir -p /etc/iptables
+    sudo sh -c "iptables-save > /etc/iptables/iptables.rules"
+    sudo sh -c "iptables-save > /etc/iptables/ip6tables.rules"
 }
 
 pip-installs() {

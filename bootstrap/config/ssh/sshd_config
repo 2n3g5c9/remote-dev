@@ -1,0 +1,30 @@
+Include /etc/ssh/sshd_config.d/*.conf
+
+Protocol 2
+
+AllowAgentForwarding no
+AllowTcpForwarding no
+PasswordAuthentication no
+PermitEmptyPasswords no
+PermitUserEnvironment no
+PermitRootLogin no
+PermitTunnel no
+X11Forwarding no
+
+ClientAliveInterval 300
+ClientAliveCountMax 2
+
+AllowUsers 2n3g5c9
+MaxAuthTries 3
+
+ChallengeResponseAuthentication no
+GSSAPIAuthentication no
+KerberosAuthentication no
+PrintMotd no
+UsePAM yes
+
+# Allow client to pass locale environment variables
+AcceptEnv LANG LC_*
+
+# override default of no subsystems
+Subsystem	sftp	/usr/lib/openssh/sftp-server

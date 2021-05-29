@@ -35,6 +35,12 @@ resource "google_compute_instance" "this" {
 
   allow_stopping_for_update = true
 
+  shielded_instance_config = {
+    enable_secure_boot          = true
+    enable_vtpm                 = true
+    enable_integrity_monitoring = true
+  }
+
   metadata = {
     ssh-keys = "${var.ssh_user}:${var.ssh_pub_key}"
   }

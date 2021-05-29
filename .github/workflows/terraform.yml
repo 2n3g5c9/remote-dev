@@ -51,12 +51,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run Terraform Security Checks ✅
-        uses: tfsec/tfsec-sarif-action@v0.0.4
+        uses: triat/terraform-security-scan@v2.2.3
         with:
-          working_directory: terraform/modules/remote-dev
-          sarif_file: tfsec.sarif
+          tfsec_actions_working_dir: terraform/modules/remote-dev
 
-      - name: Upload SARIF file ⏫
-        uses: github/codeql-action/upload-sarif@v1
-        with:
-          sarif_file: tfsec.sarif

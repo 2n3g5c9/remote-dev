@@ -33,6 +33,9 @@
   "provisioners": [
     {
       "type": "shell",
+      "environment_vars": [
+        "SSH_USERNAME={{user `ssh_username`}}"
+      ],
       "inline": [
         "git clone https://github.com/2n3g5c9/remote-dev.git",
         "(cd ./remote-dev/bootstrap; ./bootstrap.sh)"

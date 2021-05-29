@@ -113,6 +113,7 @@ additional-installs() {
 security-hardening() {
     echo " ==> Setting up sshd"
     sudo cp config/ssh/sshd_config /etc/ssh/sshd_config
+    sudo sed -i "s/SSH_USERNAME/${SSH_USERNAME}/g" /etc/ssh/sshd_config
 
     echo " ==> Setting up sshguard"
     sudo iptables -A INPUT -m multiport -p tcp --destination-ports 22 -j sshguard

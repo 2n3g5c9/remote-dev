@@ -14,7 +14,7 @@ X11Forwarding no
 ClientAliveInterval 300
 ClientAliveCountMax 2
 
-AllowUsers 2n3g5c9
+AllowUsers SSH_USERNAME
 MaxAuthTries 3
 
 ChallengeResponseAuthentication no

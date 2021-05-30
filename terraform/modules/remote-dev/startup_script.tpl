@@ -14,4 +14,8 @@ sudo sh -c "iptables-save > /etc/iptables/rules.v4"
 sudo sh -c "iptables-save > /etc/iptables/rules.v6"
 
 # shellcheck disable=SC2154
+sudo echo "sshd: ${join(',', tailscale_machines)}" > /etc/hosts.allow
+sudo echo "sshd: ALL" > /etc/hosts.deny
+
+# shellcheck disable=SC2154
 tailscale up --authkey="${tailscale_key}"

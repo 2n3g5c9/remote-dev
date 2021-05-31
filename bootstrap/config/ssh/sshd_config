@@ -17,6 +17,10 @@ ClientAliveCountMax 2
 AllowUsers SSH_USERNAME
 MaxAuthTries 3
 
+KexAlgorithms curve25519-sha256,curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256
+HostKeyAlgorithms rsa-sha2-512,rsa-sha2-256,ssh-ed25519
+MACs umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com
+
 ChallengeResponseAuthentication no
 GSSAPIAuthentication no
 KerberosAuthentication no

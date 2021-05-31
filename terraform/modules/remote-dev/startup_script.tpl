@@ -13,8 +13,7 @@ sudo iptables -A INPUT -p udp -s 0.0.0.0/0 --dport 60000:61000 -j DROP
 sudo sh -c "iptables-save > /etc/iptables/rules.v4"
 sudo sh -c "iptables-save > /etc/iptables/rules.v6"
 
-# shellcheck disable=SC2154
-echo "sshd: ${join(", ", tailscale_machines)}, LOCAL" | sudo tee /etc/hosts.allow
+echo "sshd: 100." | sudo tee /etc/hosts.allow
 echo "ALL: ALL" | sudo tee /etc/hosts.deny
 
 # shellcheck disable=SC2154

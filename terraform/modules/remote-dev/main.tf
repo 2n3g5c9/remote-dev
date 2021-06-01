@@ -54,7 +54,7 @@ resource "google_compute_instance" "this" {
 
   service_account {
     email  = data.google_compute_default_service_account.default.email
-    scopes = ["cloud-platform"]
+    scopes = ["logging-write", "monitoring-write"]
   }
 
   tags = ["tailscale-ssh-access"]

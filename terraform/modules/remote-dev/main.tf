@@ -57,7 +57,7 @@ resource "google_compute_instance" "this" {
     scopes = ["logging-write", "monitoring-write"]
   }
 
-  tags = ["tailscale-ssh-access"]
+  tags = ["remote-dev"]
 
   labels = {
     managed-by = "terraform"
@@ -68,12 +68,13 @@ resource "google_compute_instance" "this" {
 # CREATE NETWORK RESOURCES
 # ---------------------------------------------------------------------------------------------------------------------
 
-resource "google_compute_firewall" "tailscale_ssh" {
-  name    = "tailscale-ssh"
+resource "google_compute_firewall" "ingress" {
+  name    = "ingress"
   network = "default"
 
+  direction     = "INGRESS"
   source_ranges = var.tailscale_machines
-  target_tags   = ["tailscale-ssh-access"]
+  target_tags   = ["remote-dev"]
 
   allow {
     protocol = "tcp"
@@ -83,6 +84,20 @@ resource "google_compute_firewall" "tailscale_ssh" {
   allow {
     protocol = "udp"
     ports    = ["60000-61000"]
+  }
+}
+
+resource "google_compute_firewall" "egress" {
+  name    = "egress"
+  network = "default"
+
+  direction          = "EGRESS"
+  destination_ranges = ["0.0.0.0/0"] #tfsec:ignore:GCP004
+  target_tags        = ["remote-dev"]
+
+  allow {
+    protocol = "tcp"
+    ports    = ["80", "443"]
   }
 }
 

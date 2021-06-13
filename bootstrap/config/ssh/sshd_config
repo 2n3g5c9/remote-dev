@@ -1,5 +1,3 @@
-Include /etc/ssh/sshd_config.d/*.conf
-
 Protocol 2
 
 AllowAgentForwarding no
@@ -28,9 +26,3 @@ IgnoreRhosts yes
 KerberosAuthentication no
 PrintMotd no
 UsePAM yes
-
-# Allow client to pass locale environment variables
-AcceptEnv LANG LC_*
-
-# override default of no subsystems
-Subsystem	sftp	/usr/lib/openssh/sftp-server

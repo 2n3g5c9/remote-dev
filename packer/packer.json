@@ -3,7 +3,7 @@
     "gce_project_id": "",
     "gce_zone": "us-east1-b",
     "gce_source_image_project_id": "ubuntu-os-cloud",
-    "gce_source_image_family": "ubuntu-2004-lts",
+    "gce_source_image_family": "ubuntu-2104",
     "name": "remote-dev",
     "ssh_username": "2n3g5c9"
   },
@@ -17,7 +17,7 @@
       "source_image_family": "{{user `gce_source_image_family`}}",
       "ssh_username": "{{user `ssh_username`}}",
       "image_name": "packer-{{user `name`}}-{{timestamp}}",
-      "image_description": "Ubuntu 20.04 LTS remote development server.",
+      "image_description": "Ubuntu 21.04 LTS remote development server.",
       "image_family": "{{user `name`}}",
       "use_internal_ip": false,
       "scopes": [

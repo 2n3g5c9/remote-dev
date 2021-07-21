@@ -4,10 +4,10 @@ set -eu
 
 export DEBIAN_FRONTEND=noninteractive
 
-DELTA_VERSION="0.7.1"
+DELTA_VERSION="0.8.3"
 GO_VERSION="1.16"
 NODE_VERSION="16"
-NVIM_VERSION="0.4.4"
+NVIM_VERSION="0.5.0"
 
 apt-sources() {
     echo " ==> Adds additional APT sources"

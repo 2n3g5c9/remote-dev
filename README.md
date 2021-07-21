@@ -45,7 +45,7 @@
 
 This repository helps automate the provisioning of an ephemeral development server on
 [Google Cloud Platform](https://cloud.google.com/). An immutable image is built with [Packer](https://packer.io/) and
-deployed on an `f1-micro` [Compute Engine](https://cloud.google.com/compute) instance (in `us-east1-b` to fall in the
+deployed on an `e2-micro` [Compute Engine](https://cloud.google.com/compute) instance (in `us-east1-b` to fall in the
 free tier) with [Terraform](https://www.terraform.io/), all via [Cloud Build](https://cloud.google.com/cloud-build).
 The instance is only accessible via SSH and MOSH in your [Tailscale](https://tailscale.com/) network. Keep in mind
 you'll be charged for the External IP address.

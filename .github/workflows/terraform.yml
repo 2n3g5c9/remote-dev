@@ -28,8 +28,8 @@ jobs:
 
       - name: Download TFLint GCP plugin ⏬
         env:
-          TFLINT_RULESET_GCP_VERSION: v0.9.0
-          TFLINT_RULESET_GCP_SHA256: 1fcc29e9fe6953a506fa53195f63e1aed2d5954bc7690cd46e0e6b492d82d26e
+          TFLINT_RULESET_GCP_VERSION: v0.10.0
+          TFLINT_RULESET_GCP_SHA256: ca15ccad281ba4855f6d809eb129036a2b86aa358207172186a2ea8c429cd763
         run: |
           mkdir -p ~/.tflint.d/plugins && cd ~/.tflint.d/plugins
           wget -q https://github.com/terraform-linters/tflint-ruleset-google/releases/download/$TFLINT_RULESET_GCP_VERSION/tflint-ruleset-google_linux_amd64.zip

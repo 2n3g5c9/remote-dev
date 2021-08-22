@@ -93,7 +93,7 @@ In the `cloud-builders-community` repository, setup Packer for **Cloud Build**:
 In the `cloud-builders-community` repository, setup Terraform for **Cloud Build**:
 
 ```bash
-(cd terraform; gcloud builds submit --substitutions=_TERRAFORM_VERSION="1.0.3",_TERRAFORM_VERSION_SHA256SUM="99c4866ffc4d3a749671b1f74d37f907eda1d67d7fc29ed5485aeff592980644")
+(cd terraform; gcloud builds submit --substitutions=_TERRAFORM_VERSION="1.0.5",_TERRAFORM_VERSION_SHA256SUM="7ce24478859ab7ca0ba4d8c9c12bb345f52e8efdc42fa3ef9dd30033dbf4b561")
 ```
 
 ## ⚙️ How to build the image

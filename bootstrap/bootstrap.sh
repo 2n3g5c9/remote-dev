@@ -128,7 +128,8 @@ security-hardening() {
 
 pip-installs() {
     echo " ==> Installing Python modules"
-    pip3 install pynvim
+    pip install pynvim
+    pip install pre-commit
 }
 
 go-installs() {

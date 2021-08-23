@@ -46,6 +46,7 @@ apt-installs() {
         tailscale \
         terraform-ls \
         tmux \
+        universal-ctags \
         unzip \
         zsh
     sudo apt-get auto-remove -y

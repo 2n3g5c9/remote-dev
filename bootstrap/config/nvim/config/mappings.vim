@@ -48,12 +48,11 @@ let mapleader = " "
     " Colorised pairs
     let g:rainbow_active = 1
 
-    " NERDTree
-    nnoremap nt :NERDTreeToggle<CR>
-    let g:NERDTreeHijackNetrw = 0
-
     " NERDCommenter
     map <leader>/ <Plug>NERDCommenterToggle
+
+    " Tagbar
+    nnoremap tb :TagbarToggle<CR>
 
     " WhichKey
     nnoremap <silent> <leader> :WhichKey '<Space>'<CR>

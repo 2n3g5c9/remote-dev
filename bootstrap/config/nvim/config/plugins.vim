@@ -1,5 +1,4 @@
 call plug#begin('~/.local/share/nvim/plugged')
-
 " General {{{
     " Color scheme
     Plug 'gruvbox-community/gruvbox'
@@ -36,7 +35,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'psliwka/vim-smoothie'
 
     " File system explorer
-    Plug 'preservim/nerdtree'
+    Plug 'tpope/vim-vinegar'
 
     " Comment functions
     Plug 'preservim/nerdcommenter'
@@ -45,17 +44,11 @@ call plug#begin('~/.local/share/nvim/plugged')
     " File icons all around vim
     Plug 'ryanoasis/vim-devicons'
 
-    " Syntax highlighter for NERDtree
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-
     " Handy features for surroundings
     Plug 'tpope/vim-surround'
 
     " Lean status/tabline
     Plug 'vim-airline/vim-airline'
-
-    " Syntax checking hacks
-    Plug 'vim-syntastic/syntastic'
 
     " Additional text objects
     Plug 'wellle/targets.vim'
@@ -81,7 +74,6 @@ call plug#begin('~/.local/share/nvim/plugged')
     let g:terraform_align=1
     let g:terraform_completion_keys = 1
     let g:terraform_fmt_on_save=1
-    let g:syntastic_terraform_tffilter_plan = 1
 "}}}
 
 " Development {{{
@@ -226,20 +218,22 @@ call plug#begin('~/.local/share/nvim/plugged')
     autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
     autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
     let g:coc_global_extensions += ['coc-tsserver']
+    if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+      let g:coc_global_extensions += ['coc-prettier']
+    endif
+
     if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
       let g:coc_global_extensions += ['coc-eslint']
     endif
 
     "Prettier
     Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-    if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
-      let g:coc_global_extensions += ['coc-prettier']
-    endif
 
     " Python
+    Plug 'psf/black', { 'branch': 'stable' }
+    autocmd BufWritePre *.py execute ':Black'
     Plug 'davidhalter/jedi-vim'
     Plug 'nvie/vim-flake8'
-    let g:coc_global_extensions += ['coc-jedi']
 "}}}
 
 call plug#end()

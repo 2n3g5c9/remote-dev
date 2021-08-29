@@ -5,7 +5,7 @@ set -eu
 export DEBIAN_FRONTEND=noninteractive
 
 DELTA_VERSION="0.8.3"
-GO_VERSION="1.16"
+GO_VERSION="1.17"
 NODE_VERSION="16"
 NVIM_VERSION="0.5.0"
 
@@ -53,26 +53,11 @@ apt-installs() {
 }
 
 additional-installs() {
-    if [ ! -d "${HOME}/.oh-my-zsh" ]; then
-        echo " ==> Installing Oh My Zsh"
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-    fi
-
     if [ ! -f "/usr/local/bin/starship" ]; then
         echo " ==> Installing Starship"
         curl -fsSL https://starship.rs/install.sh | bash -s -- -f
     fi
 
-    ZSH_CUSTOM="${HOME}/.oh-my-zsh/custom"
-    if [ ! -d "${ZSH_CUSTOM}/plugins/zsh-autosuggestions" ]; then
-        echo " ==> Installing zsh-autosuggestions"
-        git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM}/plugins/zsh-autosuggestions"
-    fi
-
-    if [ ! -d "${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting" ]; then
-        echo " ==> Installing zsh-syntax-highlighting"
-        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting"
-    fi
 
     if [ ! -f "/usr/bin/delta" ]; then
         echo " ==> Installing git-delta"
@@ -129,7 +114,7 @@ security-hardening() {
 
 pip-installs() {
     echo " ==> Installing Python modules"
-    pip install pynvim
+    pip install -U jedi-language-server pre-commit pynvim
     pip install pre-commit
 }
 
@@ -158,6 +143,9 @@ js-installs() {
         echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
         sudo apt-get update && sudo apt-get install -y yarn && sudo apt-get auto-remove
     fi
+
+    echo " ==> Installing global node modules"
+    yarn global add ansible-language-server bash-language-server dockerfile-language-server-nodejs graphql-language-service-cli @tailwindcss/language-server typescript typescript-language-server vim-language-server vscode-langservers-extracted yaml-language-server
 }
 
 copy-dotfiles() {

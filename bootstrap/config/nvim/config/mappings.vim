@@ -21,9 +21,6 @@ let mapleader = " "
     nnoremap <leader>H :vertical resize -5<CR>
     nnoremap <leader>J :resize +5<CR>
     nnoremap <leader>K :resize -5<CR>
-
-    " Buffers
-    nmap <C-o> :Buffers<CR>
 "}}}
 
 " Text manipulation {{{
@@ -58,10 +55,17 @@ let mapleader = " "
     nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
     set timeoutlen=500
 
-    " fzf and rg
-    nnoremap ; :Files<CR>
-    nnoremap ' :GFiles<CR>
-    nnoremap \ :Rg<CR>
+    " Telescope
+    nnoremap ; <cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({}))<cr>
+    nnoremap ' <cmd>lua require('telescope.builtin').git_files(require('telescope.themes').get_dropdown({}))<cr>
+    nnoremap \ <cmd>lua require('telescope.builtin').live_grep(require('telescope.themes').get_dropdown({}))<cr>
+    nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown({}))<cr>
+    nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags(require('telescope.themes').get_dropdown({}))<cr>
+
+    " LSP
+    nnoremap <silent> gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
+    nnoremap <silent> gs <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>
+    nnoremap <silent> K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
 
     " git
     nnoremap <leader>ga :G add %:p<CR><CR>

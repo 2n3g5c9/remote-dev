@@ -1,6 +1,6 @@
 -- Configuration for lualine
 require'lualine'.setup{
-  options = { 
+  options = {
       theme  = gruvbox,
       section_separators = '',
       component_separators = '',
@@ -48,7 +48,7 @@ local on_attach = function(client, bufnr)
 
 end
 
-local servers = { 'ansiblels', 'bashls', 'cssls', 'dockerls', 'gopls', 'graphql', 'html', 'jedi_language_server', 'tailwindcss', 'terraformls', 
+local servers = { 'ansiblels', 'bashls', 'cssls', 'dockerls', 'gopls', 'graphql', 'html', 'jedi_language_server', 'tailwindcss', 'terraformls',
 'tsserver', 'vimls', 'yamlls' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {

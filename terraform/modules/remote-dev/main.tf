@@ -13,6 +13,7 @@ data "google_compute_image" "this" {
   project = var.project
 }
 
+#tfsec:ignore:google-compute-vm-disk-encryption-customer-key
 resource "google_compute_instance" "this" {
   name         = "remote-dev"
   machine_type = var.machine_type
@@ -27,6 +28,7 @@ resource "google_compute_instance" "this" {
   network_interface {
     network = "default"
 
+    #tfsec:ignore:google-compute-no-public-ip
     access_config {
       nat_ip       = google_compute_address.static_external.address
       network_tier = "STANDARD"
@@ -42,7 +44,8 @@ resource "google_compute_instance" "this" {
   }
 
   metadata = {
-    ssh-keys = "${var.ssh_user}:${var.ssh_pub_key}"
+    ssh-keys               = "${var.ssh_user}:${var.ssh_pub_key}"
+    block-project-ssh-keys = true
   }
 
   metadata_startup_script = templatefile("${path.module}/startup_script.tpl",
@@ -92,7 +95,7 @@ resource "google_compute_firewall" "egress" {
   network = "default"
 
   direction          = "EGRESS"
-  destination_ranges = ["0.0.0.0/0"] #tfsec:ignore:GCP004
+  destination_ranges = ["0.0.0.0/0"] #tfsec:ignore:google-compute-no-public-egress
   target_tags        = ["remote-dev"]
 
   allow {

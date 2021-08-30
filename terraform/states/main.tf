@@ -9,6 +9,8 @@ resource "google_storage_bucket" "logs" {
   location      = var.region
   storage_class = "STANDARD"
 
+  uniform_bucket_level_access = true
+
   versioning {
     enabled = false
   }
@@ -25,6 +27,8 @@ resource "google_storage_bucket" "tf_state" {
 
   location      = var.region
   storage_class = "STANDARD"
+
+  uniform_bucket_level_access = true
 
   versioning {
     enabled = true

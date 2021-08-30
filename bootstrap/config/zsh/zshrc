@@ -1,5 +1,5 @@
 # General
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbini:$HOME/.local/bin
 
 export VISUAL=nvim
 export EDITOR=nvim

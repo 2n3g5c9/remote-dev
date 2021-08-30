@@ -48,7 +48,7 @@ apt-installs() {
         tmux \
         universal-ctags \
         unzip \
-        xdg-tools \
+        xdg-utils \
         zsh
     sudo apt-get auto-remove -y
 }

@@ -48,16 +48,21 @@ apt-installs() {
         tmux \
         universal-ctags \
         unzip \
+        xdg-tools \
         zsh
     sudo apt-get auto-remove -y
 }
 
 additional-installs() {
+    if [ ! -f "${HOME}/.zinit" ]; then
+        echo " ==> Installing zinit"
+        curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh | bash -s -- f
+    fi
+
     if [ ! -f "/usr/local/bin/starship" ]; then
         echo " ==> Installing Starship"
         curl -fsSL https://starship.rs/install.sh | bash -s -- -f
     fi
-
 
     if [ ! -f "/usr/bin/delta" ]; then
         echo " ==> Installing git-delta"

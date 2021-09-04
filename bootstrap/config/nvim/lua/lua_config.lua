@@ -15,7 +15,7 @@ vim.api.nvim_set_keymap('n', 's', "<cmd>lua require'hop'.hint_char2()<cr>", {})
 
 -- Configuration for Treesitter
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { 'bash', 'css', 'dockerfile', 'fish', 'go', 'graphql', 'hcl', 'html', 'javascript', 'json', 'lua', 'python', 'regex', 'toml', 'typescript', 'vim', 'yaml' }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 }
 
 -- Configuration for lspconfig

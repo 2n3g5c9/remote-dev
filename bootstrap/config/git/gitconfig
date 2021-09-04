@@ -9,8 +9,6 @@
     rebase = false
 [core]
     pager = delta
-[include]
-    path = ~/.gitalias.txt
 [delta]
     plus-style = "syntax #012800"
     minus-style = "syntax #340001"

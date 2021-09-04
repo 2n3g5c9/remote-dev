@@ -30,6 +30,7 @@ apt-installs() {
     echo " ==> Installing base packages"
     sudo apt-get update
     sudo apt-get install -y \
+        fish \
         fzf \
         git \
         htop \
@@ -48,16 +49,13 @@ apt-installs() {
         tmux \
         universal-ctags \
         unzip \
-        xdg-utils \
-        zsh
+        xdg-utils
     sudo apt-get auto-remove -y
 }
 
 additional-installs() {
-    if [ ! -f "${HOME}/.zinit" ]; then
-        echo " ==> Installing zinit"
-        curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh | bash -s -- f
-    fi
+    echo " ==> Installing fisher"
+    curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 
     if [ ! -f "/usr/local/bin/starship" ]; then
         echo " ==> Installing Starship"
@@ -156,12 +154,13 @@ js-installs() {
 copy-dotfiles() {
     echo " ==> Copying dotfiles"
 
-    cp config/zsh/zshrc "${HOME}/.zshrc"
+    mkdir -p $HOME/.config/fish
+    cp config/fish/config.fish "${HOME}/.config/fish/config.fish"
+    cp config/fish/fish_plugins "${HOME}/.config/fish/fish_plugins"
     cp config/aliases/aliases "${HOME}/.aliases"
 
     cp config/tmux/tmux.conf "${HOME}/.tmux.conf"
 
-    cp config/git/gitalias.txt "${HOME}/.gitalias.txt"
     cp config/git/gitconfig "${HOME}/.gitconfig"
 
     mkdir -p "${HOME}/.config/nvim"
@@ -169,9 +168,9 @@ copy-dotfiles() {
 }
 
 change-shell() {
-    echo " ==> Changing the shell to ZSH"
-    if [ -f "/bin/zsh" ]; then
-        sudo chsh -s /bin/zsh "${USER}"
+    echo " ==> Changing the shell to Fish"
+    if [ -f "/usr/bin/fish" ]; then
+        sudo chsh -s /usr/bin/fish "${USER}"
     fi
 }
 
@@ -179,7 +178,7 @@ vim-plugins-installs() {
     LOCAL_BIN="${HOME}/.local/bin"
     if [ -f "${LOCAL_BIN}/nvim.appimage" ]; then
       echo " ==> Installing vim plugins"
-      /bin/zsh -i -c "${LOCAL_BIN}/nvim.appimage --headless +PlugInstall +qall"
+      /usr/bin/fish -i -c "${LOCAL_BIN}/nvim.appimage --headless +PlugInstall +qall"
     fi
 }
 
@@ -211,7 +210,7 @@ do-it() {
     # Dotfiles.
     copy-dotfiles
 
-    # ZSH.
+    # FISH.
     change-shell
 
     # Vim plugins installs.

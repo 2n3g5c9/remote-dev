@@ -79,11 +79,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Development {{{
     " LSP
     Plug 'neovim/nvim-lspconfig'
-    Plug 'hrsh7th/nvim-cmp'
-    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
+    Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
     Plug 'saadparwaiz1/cmp_luasnip'
     Plug 'L3MON4D3/LuaSnip'
-    Plug 'glepnir/lspsaga.nvim'
+    Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 
     " Treesitter
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -106,7 +106,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
     " Python
-    Plug 'psf/black', { 'branch': 'stable' }
+    Plug 'psf/black', { 'branch': 'main' }
     autocmd BufWritePre *.py execute ':Black'
     Plug 'davidhalter/jedi-vim'
     Plug 'nvie/vim-flake8'

@@ -43,4 +43,5 @@ jobs:
       - name: Run Terraform Security Checks ✅
         uses: aquasecurity/tfsec-pr-commenter-action@v1.2.0
         with:
+          github_token: ${{ github.token }}
           working_directory: terraform/modules/remote-dev

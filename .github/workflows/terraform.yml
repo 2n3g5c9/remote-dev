@@ -2,15 +2,9 @@ name: "Terraform Checks"
 
 on:
   push:
-    branches:
-      - master
     paths:
       - "**.tf"
-  pull_request:
-    branches:
-      - master
-    paths:
-      - "**.tf"
+      - ".github/workflows/terraform.yml"
 
 jobs:
   tflint:
@@ -19,17 +13,15 @@ jobs:
 
     steps:
       - name: Checkout Code 🛎
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+        uses: actions/checkout@v3
 
       - name: Install TFLint ⏬
         run: curl https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
 
       - name: Download TFLint GCP plugin ⏬
         env:
-          TFLINT_RULESET_GCP_VERSION: v0.10.0
-          TFLINT_RULESET_GCP_SHA256: ca15ccad281ba4855f6d809eb129036a2b86aa358207172186a2ea8c429cd763
+          TFLINT_RULESET_GCP_VERSION: v0.16.1
+          TFLINT_RULESET_GCP_SHA256: 9363baebb2ef6c3ee5aaa759629f086dc6155f4ca7e0cb11d6fe854b34546fc5
         run: |
           mkdir -p ~/.tflint.d/plugins && cd ~/.tflint.d/plugins
           wget -q https://github.com/terraform-linters/tflint-ruleset-google/releases/download/$TFLINT_RULESET_GCP_VERSION/tflint-ruleset-google_linux_amd64.zip
@@ -46,11 +38,9 @@ jobs:
 
     steps:
       - name: Checkout Code 🛎
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+        uses: actions/checkout@v3
 
       - name: Run Terraform Security Checks ✅
-        uses: triat/terraform-security-scan@v3
+        uses: aquasecurity/tfsec-pr-commenter-action@v1.2.0
         with:
-          tfsec_actions_working_dir: terraform/modules/remote-dev
+          working_directory: terraform/modules/remote-dev

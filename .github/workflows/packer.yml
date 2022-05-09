@@ -1,0 +1,24 @@
+name: "Packer Checks"
+
+on:
+  push:
+    paths:
+      - "packer/**"
+      - ".github/workflows/packer.yml"
+
+jobs:
+  packer:
+    name: Packer Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code 🛎
+        uses: actions/checkout@v3
+
+      - name: Validate Template ✅
+        uses: hashicorp/packer-github-actions@master
+        with:
+          command: validate
+          arguments: -syntax-only
+          target: .
+          working_directory: packer

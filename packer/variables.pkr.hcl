@@ -3,8 +3,8 @@
 # These parameters must be supplied when consuming this module.
 # ------------------------------------------------------------------------------
 
-variable "project" {
-  type = string
+variable "gcp_project_id" {
+  type    = string
 }
 
 # ------------------------------------------------------------------------------
@@ -12,14 +12,29 @@ variable "project" {
 # These variables have defaults, but may be overridden by the operator.
 # ------------------------------------------------------------------------------
 
-variable "region" {
+variable "gce_source_image_family" {
   type    = string
-  default = "us-east1"
-
-  validation {
-    condition = (
-      can(regex("[[:lower:]]+-[[:lower:]]+[[:digit:]]", var.region))
-    )
-    error_message = "The region value doesn't have a proper format."
-  }
+  default = "ubuntu-2204-lts"
 }
+
+variable "gce_source_image_project_id" {
+  type    = string
+  default = "ubuntu-os-cloud"
+}
+
+variable "gce_zone" {
+  type    = string
+  default = "us-east1-b"
+}
+
+variable "name" {
+  type    = string
+  default = "remote-dev"
+}
+
+variable "ssh_username" {
+  type    = string
+  default = "2n3g5c9"
+}
+
+locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }

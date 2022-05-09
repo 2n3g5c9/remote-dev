@@ -3,7 +3,7 @@ ci:
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.0.1
+    rev: v4.2.0
     hooks:
       - id: check-added-large-files
       - id: check-json
@@ -13,7 +13,7 @@ repos:
       - id: end-of-file-fixer
       - id: trailing-whitespace
   - repo: https://github.com/gruntwork-io/pre-commit
-    rev: v0.1.16
+    rev: v0.1.17
     hooks:
       - id: terraform-fmt
       - id: terraform-validate

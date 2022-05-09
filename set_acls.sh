@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-set -o errexit
-set -o pipefail
+set -eufo pipefail
 
 # Make sure a PROJECT_ID is passed
 if [ $# != 1 ]; then

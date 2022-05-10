@@ -14,10 +14,6 @@ variable "machine_type" {
   }
 }
 
-variable "project" {
-  type = string
-}
-
 variable "ssh_pub_key" {
   type = string
 }
@@ -52,6 +48,11 @@ variable "tailscale_machines" {
 # OPTIONAL PARAMETERS
 # These variables have defaults, but may be overridden by the operator.
 # ------------------------------------------------------------------------------
+
+variable "project" {
+  type    = string
+  default = "remote-dev-257323"
+}
 
 variable "region" {
   type    = string

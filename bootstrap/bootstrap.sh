@@ -64,7 +64,8 @@ do-it() {
     apt-installs
 
     # Install Ops Agent.
-    ops-agent-install
+    # Disabled until available for Ubuntu 22.04.
+    # ops-agent-install
 
     # Security hardening.
     security-hardening

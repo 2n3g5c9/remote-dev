@@ -51,6 +51,13 @@ security-hardening() {
     sudo sh -c "iptables-save > /etc/iptables/rules.v6"
 }
 
+set-dotfiles(){
+    echo "[data]
+        email = \"marc.m@outlook.com\"
+        name = \"Marc Molina\"" >> "${HOME}"/.config/chezmoi/chezmoi.toml
+    sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply 2n3g5c9
+}
+
 do-it() {
     # Add APT sources.
     apt-sources
@@ -67,6 +74,11 @@ do-it() {
 
     # Security hardening.
     security-hardening
+
+    # Set dotfiles.
+    set-dotfiles
 }
 
 do-it
+
+}

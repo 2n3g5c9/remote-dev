@@ -1,6 +1,6 @@
 source "googlecompute" "ubuntu" {
   image_name        = "packer-${var.name}-${local.timestamp}"
-  image_description = "Ubuntu 22.04 LTS remote development server."
+  image_description = "Ubuntu 20.04 LTS remote development server."
   image_family      = var.name
 
   project_id = var.gcp_project_id

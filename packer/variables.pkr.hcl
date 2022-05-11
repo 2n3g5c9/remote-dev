@@ -14,7 +14,7 @@ variable "gcp_project_id" {
 
 variable "gce_source_image_family" {
   type    = string
-  default = "ubuntu-2204-lts"
+  default = "ubuntu-2004-lts"
 }
 
 variable "gce_source_image_project_id" {

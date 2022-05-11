@@ -33,6 +33,12 @@ apt-installs() {
     sudo apt-get auto-remove -y
 }
 
+ops-agent-install() {
+    echo " ==> Installing Ops Agent"
+    curl -sSO https://dl.google.com/cloudagents/add-google-cloud-ops-agent-repo.sh
+    sudo bash add-google-cloud-ops-agent-repo.sh --also-install
+}
+
 security-hardening() {
     echo " ==> Setting up sshd"
     sudo cp config/ssh/sshd_config /etc/ssh/sshd_config
@@ -56,6 +62,9 @@ do-it() {
 
     # APT installs.
     apt-installs
+
+    # Install Ops Agent.
+    ops-agent-install
 
     # Security hardening.
     security-hardening

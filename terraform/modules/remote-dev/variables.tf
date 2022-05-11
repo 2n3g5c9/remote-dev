@@ -49,6 +49,11 @@ variable "tailscale_machines" {
 # These variables have defaults, but may be overridden by the operator.
 # ------------------------------------------------------------------------------
 
+variable "env" {
+  type    = string
+  default = "prod"
+}
+
 variable "project" {
   type    = string
   default = "remote-dev-257323"

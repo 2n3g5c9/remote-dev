@@ -63,6 +63,7 @@ resource "google_compute_instance" "this" {
   tags = ["remote-dev"]
 
   labels = {
+    env        = var.env
     managed-by = "terraform"
   }
 }

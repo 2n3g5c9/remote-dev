@@ -15,3 +15,10 @@ sudo sh -c "iptables-save > /etc/iptables/rules.v6"
 
 # shellcheck disable=SC2154
 tailscale up --authkey="${tailscale_key}"
+
+# Set dotfiles
+mkdir -p ~/.config./chezmoi/
+echo "[data]
+    email = \"marc.m@outlook.com\"
+    name = \"Marc Molina\"" > ~/.config/chezmoi/chezmoi.toml
+sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply 2n3g5c9

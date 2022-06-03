@@ -17,8 +17,8 @@ sudo sh -c "iptables-save > /etc/iptables/rules.v6"
 tailscale up --authkey="${tailscale_key}"
 
 # Set dotfiles
-mkdir -p ~/.config./chezmoi/
+mkdir -p ~/.local/share/chezmoi/
 echo "[data]
-    email = \"marc.m@outlook.com\"
-    name = \"Marc Molina\"" > ~/.config/chezmoi/chezmoi.toml
+    email = \"${email}\"
+    name = \"${name}\"" > ~/.local/share/chezmoi/chezmoi.toml
 sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply 2n3g5c9

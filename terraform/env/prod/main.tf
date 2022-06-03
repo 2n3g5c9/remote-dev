@@ -22,4 +22,7 @@ module "remote_dev" {
 
   tailscale_key      = var.tailscale_key
   tailscale_machines = var.tailscale_machines
+
+  name  = var.name
+  email = var.email
 }

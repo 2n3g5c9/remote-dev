@@ -1,5 +1,5 @@
 ci:
-  skip: [terraform-fmt, terraform-validate, tflint, shellcheck]
+  skip: [terraform-fmt, terraform-validate, tflint]
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -18,4 +18,3 @@ repos:
       - id: terraform-fmt
       - id: terraform-validate
       - id: tflint
-      - id: shellcheck

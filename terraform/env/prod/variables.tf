@@ -3,6 +3,10 @@
 # These parameters must be supplied when consuming this module.
 # ------------------------------------------------------------------------------
 
+variable "email" {
+  type = string
+}
+
 variable "machine_type" {
   type = string
 
@@ -12,7 +16,10 @@ variable "machine_type" {
     )
     error_message = "The machine type value doesn't have a proper format."
   }
+}
 
+variable "name" {
+  type = string
 }
 
 variable "ssh_pub_key" {

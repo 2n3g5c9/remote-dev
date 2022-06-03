@@ -50,6 +50,9 @@ resource "google_compute_instance" "this" {
 
   metadata_startup_script = templatefile("${path.module}/startup_script.tpl",
     {
+      name  = var.name
+      email = var.email
+
       tailscale_key      = var.tailscale_key
       tailscale_machines = var.tailscale_machines
     }

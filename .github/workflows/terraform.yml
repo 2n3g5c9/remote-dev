@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Checkout Code 🛎
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install TFLint ⏬
         run: curl https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
@@ -38,7 +38,7 @@ jobs:
 
     steps:
       - name: Checkout Code 🛎
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Run Terraform Security Checks ✅
         uses: aquasecurity/tfsec-pr-commenter-action@v1.2.0
